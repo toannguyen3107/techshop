@@ -9,9 +9,9 @@
 </head>
 
 <body>
-    <h1 class="text-3xl font-bold underline text-clifford">
-        Hello world!
-    </h1>
+    <?php require_once('routes.php'); ?>
+    <!--  -->
+    <footer>Copyright</footer>
 </body>
 
 </html>
