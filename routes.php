@@ -1,7 +1,7 @@
 <?php 
     function call($controller, $action){
           require_once('app/controller/'.$controller.'_controller.php');  
-          switch($action){
+          switch($controller){
             case 'pages':
                 $controller = new Page();
         
@@ -15,7 +15,7 @@
         if (in_array($action, $controllers[$controller])) {
             call($controller, $action);
         } else {
-            call('pages', 'error');
+            call('pages', 'error'); // if action hasn't in controllers => error
         }
     }else {
         call('pages', 'error');
