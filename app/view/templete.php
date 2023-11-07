@@ -9,6 +9,10 @@
 </head>
 
 <body>
+    <header>
+        <a href="#">HOME</a>
+        <a href="#">ABOUT</a>
+    </header>
     <?php require_once('routes.php'); ?>
     <!--  -->
     <footer>Copyright</footer>
