@@ -8,6 +8,7 @@
         public function __construct(){
             $url = $this->parseUrl();
             // print_r($url);
+
             if(file_exists('../app/controller/'. $url[0] .'.php')){
                 $this->controller = $url[0];
                 unset($url[0]);
