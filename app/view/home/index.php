@@ -31,5 +31,6 @@
     </div>
     <!-- footer -->
     <?php require_once '../app/component/footer.php'?>
+
 </body>
 </html>

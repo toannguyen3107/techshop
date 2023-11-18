@@ -28,7 +28,7 @@
         </div>
         <span class="my-auto text-4xl">|</span>
         <div class="w-1/12 my-auto text-center">
-            <a href="#" class="flex flex-col gap-3 p-1 items-center hover:bg-[#fff0d4] hover:rounded-lg justify-center hover:border-2 hover:border-[#111]">
+            <a href="/techshop/public/news/index" class="flex flex-col gap-3 p-1 items-center hover:bg-[#fff0d4] hover:rounded-lg justify-center hover:border-2 hover:border-[#111]">
                 <p class="font-semibold">Tin tức</p>
             </a>
         </div>
