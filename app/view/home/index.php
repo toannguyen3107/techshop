@@ -8,7 +8,7 @@
 <body class="overflow-x-hidden">
     <?php require_once '../app/component/nav.php'?>
     <div class="mx-auto"><img src="/techshop/public/img/adv.png" alt="Adv main page" width="100%"></div>        
-    <div class="mx-auto w-[80%] bg-[#DC6C55] rounded-[1rem] mt-[1rem] grid grid-rows-4 grid-cols-12 p-[1rem] relative">
+    <div class="none mx-auto w-[80%] bg-[#DC6C55] rounded-[1rem] mt-[1rem] lg:grid grid-rows-4 grid-cols-12 p-[1rem] relative">
         <div class="col-span-2"><p class="text-[#fff] border-2 border-[#fff] rounded-[0.5rem] text-center bg-[#111] p-[0.3rem] mr-[0.5rem] font-bold text-[10px] lg:text-base">ĐIỆN THOẠI</p></div>
         <div class="col-span-2"><p class="text-[#111] border-2 border-[#111] rounded-[0.5rem] text-center bg-[#fff] p-[0.3rem] mr-[0.5rem] font-bold text-[10px] lg:text-base">LAPTOP</p></div>
         <div class="col-span-2"><p class="text-[#111] border-2 border-[#111] rounded-[0.5rem] text-center bg-[#fff] p-[0.3rem] mr-[0.5rem] font-bold text-[10px] lg:text-base">PHỤ KIỆN</p></div>
