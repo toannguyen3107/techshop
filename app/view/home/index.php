@@ -41,16 +41,38 @@
                 <p class="font-bold text-xl">DANH MỤC NỔI BẬT</p>
             </div>
             <?php 
-            foreach($data['category'] as $category){
-                $out = '<div class="col-span-2 flex justify-center"><a href="'.$category->link.'">';
-                $out .= '<img src="'. $category->img .'" alt="'. $category->name.'">';
-                $out .= '<p>'. $category->name .'</p>';
-                $out .= '</a></div>';
-                echo $out;
-            }
+                foreach($data['category'] as $category){
+                    $out = '<div class="col-span-2 flex justify-center"><a href="'.$category->link.'">';
+                    $out .= '<img src="'. $category->img .'" alt="'. $category->name.'">';
+                    $out .= '<p>'. $category->name .'</p>';
+                    $out .= '</a></div>';
+                    echo $out;
+                }
             ?>
     </div>
-
+    
+    <div class="grid xl:grid-cols-10 lg:grid-cols-9 grid-col-10 gap-x-3 gap-y-5 mt-[1rem] w-[80%] mx-auto">
+        <div class="col-span-10 ml-[5vw]">
+            <p class="font-bold text-xl">GỢI Ý HÔM NAY</p>
+        </div>
+        <?php
+            $i = 0;
+            foreach($data['product'] as $product){
+                $i += 1;
+                if($i >= 11){
+                    $out = '<div class="col-span-5 lg:col-span-3 xl:col-span-2 gap-3 bg-[#24D882] opacity-30 rounded-[0.7rem] mx-auto p-[1rem] border-2 hover:border-[#111] hover:bg-[#eee] py-[2rem]" style="display: none;" ><a href="#">';
+                }else{
+                    $out = '<div class="col-span-5 lg:col-span-3 xl:col-span-2 gap-3 bg-[#24D882] opacity-80 rounded-[0.7rem] mx-auto p-[1rem] hover:border-2 hover:border-[#111] hover:bg-[#eee] py-[2rem]" ><a href="#">';
+                }
+                
+                $out .= '<img src="'. $product->img .'" alt="image" class="mx-auto" width="70px">';
+                $out .= '<p class="w-[70%] text-[0.7rem]">'. $product->name .'</p>';
+                $out .= '<p><span class="inliine-block mr-3 text-[#ED3419]">'. $product->currCost .'</span><span class="line-through">' . $product->oriCost . '</span></p></a></div>';
+                echo $out;
+            }
+        ?>
+        <button type="button" class="col-span-10 mx-auto mb-[1rem] bg-orange-500 border-2 border-[#111] rounded-[0.5rem] hover:bg-orange-300 py-[0.7rem] px-[1.3rem]"><a href="#">Xem Thêm</a></button>
+    </div>
     <!-- footer -->
     <?php require_once '../app/component/footer.php'?>
     <script>
