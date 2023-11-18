@@ -36,6 +36,21 @@
         <button type="button" class="absolute top-[50%] bottom-[50%] right-0 py-[2rem] px-[1rem] bg-gray-100  border-y-2 border-l-2 border-gray-600 flex items-center rounded-l-[2rem] hover:bg-gray-400" id="nexProduct"><span class="font-bold text-3xl inline-block" >&gt;</span></button>
         <button type="button" class="absolute top-[50%] bottom-[50%] left-0 py-[2rem] px-[1rem] bg-gray-100  border-y-2 border-l-2 border-gray-600 flex items-center rounded-r-[2rem] hover:bg-gray-400" id="preProduct"><span class="font-bold text-3xl inline-block" >&lt;</span></button>
     </div>
+    <div class="grid grid-cols-12 gap-3 w-[80%] mx-auto mt-[1rem] bg-[#eee] rounded-[1rem] p-[1rem]">
+            <div class="col-span-12">
+                <p class="font-bold text-xl">DANH MỤC NỔI BẬT</p>
+            </div>
+            <?php 
+            foreach($data['category'] as $category){
+                $out = '<div class="col-span-2 flex justify-center"><a href="'.$category->link.'">';
+                $out .= '<img src="'. $category->img .'" alt="'. $category->name.'">';
+                $out .= '<p>'. $category->name .'</p>';
+                $out .= '</a></div>';
+                echo $out;
+            }
+            ?>
+    </div>
+
     <!-- footer -->
     <?php require_once '../app/component/footer.php'?>
     <script>
@@ -56,7 +71,6 @@
     } else {
         currIndex = productContainer.length - 1;
     }
-    console.log(currIndex);
 }
 
 function preProduct() {
@@ -71,7 +85,6 @@ function preProduct() {
     const indexBlock = Math.min(currIndex + 4, productContainer.length - 1);
     productContainer[currIndex].style.display = "block";
     productContainer[indexBlock].style.display = "none";
-    console.log(currIndex);
 }
 
 
