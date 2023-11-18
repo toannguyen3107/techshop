@@ -534,13 +534,43 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
+.container {
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .container {
+    max-width: 640px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1024px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .container {
+    max-width: 1536px;
+  }
+}
+
 .my-auto {
   margin-top: auto;
   margin-bottom: auto;
-}
-
-.ms-\[0\.5rem\] {
-  margin-inline-start: 0.5rem;
 }
 
 .flex {
@@ -559,16 +589,16 @@ video {
   width: 8.333333%;
 }
 
+.w-2\/12 {
+  width: 16.666667%;
+}
+
 .w-\[72px\] {
   width: 72px;
 }
 
 .flex-row {
   flex-direction: row;
-}
-
-.flex-col {
-  flex-direction: column;
 }
 
 .items-center {
@@ -583,31 +613,8 @@ video {
   gap: 0.25rem;
 }
 
-.divide-x > :not([hidden]) ~ :not([hidden]) {
-  --tw-divide-x-reverse: 0;
-  border-right-width: calc(1px * var(--tw-divide-x-reverse));
-  border-left-width: calc(1px * calc(1 - var(--tw-divide-x-reverse)));
-}
-
 .rounded-full {
   border-radius: 9999px;
-}
-
-.border {
-  border-width: 1px;
-}
-
-.border-x {
-  border-left-width: 1px;
-  border-right-width: 1px;
-}
-
-.border-r-4 {
-  border-right-width: 4px;
-}
-
-.border-r-2 {
-  border-right-width: 2px;
 }
 
 .bg-\[\#49BF8C\] {
@@ -632,28 +639,7 @@ video {
   border-radius: 0.5rem;
 }
 
-.hover\:bg-yellow-200:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(254 240 138 / var(--tw-bg-opacity));
-}
-
-.hover\:bg-\[\]:hover {
-  background-color: ;
-}
-
-.hover\:bg-\[\#\]:hover {
-  background-color: #;
-}
-
 .hover\:bg-\[\#fff0d4\]:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(255 240 212 / var(--tw-bg-opacity));
-}
-
-@media (min-width: 768px) {
-  .md\:divide-x > :not([hidden]) ~ :not([hidden]) {
-    --tw-divide-x-reverse: 0;
-    border-right-width: calc(1px * var(--tw-divide-x-reverse));
-    border-left-width: calc(1px * calc(1 - var(--tw-divide-x-reverse)));
-  }
 }

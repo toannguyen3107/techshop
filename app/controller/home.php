@@ -7,4 +7,5 @@
             $this->view('home/index', ['name' => $user->name]);
         }
     }
+    
 ?>

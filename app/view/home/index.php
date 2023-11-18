@@ -6,5 +6,6 @@
 </head>
 <body>
     <?php require_once '../app/component/nav.php'?>
+    
 </body>
 </html>

@@ -30,4 +30,16 @@
             <p>24h</p>
             <p>Công nghệ</p>
         </div>
+
+        <div class="w-1/12 my-auto">
+            <a href="#" class=" flex flex-row gap-1 p-1 items-center hover:bg-[#fff0d4] hover:rounded-lg">
+                <span class="text-lg">Tin tức</span>
+            </a>
+        </div>
+        <div class="w-2/12 my-auto">
+            <a href="/techshop/app/img/logo.png" class=" flex flex-row gap-1 p-1 items-center hover:bg-[#fff0d4] hover:rounded-lg">
+                <span class="text-lg">Đăng nhập/ Đăng kí</span>
+            </a>
+        </div>
+
 </nav>
