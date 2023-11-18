@@ -18,19 +18,67 @@
         </div>
         
         <?php
+            $i = 0;
             foreach($data['product'] as $product){
-                $out = '<div class="row-span-3 col-span-3 gap-3 bg-[#fff] rounded-[0.7rem] mx-auto p-[1rem] hover:border-2 hover:border-[#111] hover:bg-[#eee] py-[2rem]" ><a href="#">';
+                $i += 1;
+                if($i >= 5){
+                    $out = '<div class="card-template row-span-3 col-span-3 gap-3 bg-[#fff] rounded-[0.7rem] mx-auto p-[1rem] hover:border-2 hover:border-[#111] hover:bg-[#eee] py-[2rem]" style="display: none;" ><a href="#">';
+                }else{
+                    $out = '<div class="card-template row-span-3 col-span-3 gap-3 bg-[#fff] rounded-[0.7rem] mx-auto p-[1rem] hover:border-2 hover:border-[#111] hover:bg-[#eee] py-[2rem]" ><a href="#">';
+                }
+                
                 $out .= '<img src="'. $product->img .'" alt="image" class="mx-auto">';
                 $out .= '<p class="w-[80%] text-center">'. $product->name .'</p>';
                 $out .= '<p><span class="inliine-block mr-3 text-[#ED3419]">'. $product->currCost .'</span><span class="line-through">' . $product->oriCost . '</span></p></a></div>';
                 echo $out;
             }
         ?>
-        <button type="button" class="absolute top-[50%] bottom-[50%] right-0 py-[2rem] px-[1rem] bg-gray-100  border-y-2 border-l-2 border-gray-600 flex items-center rounded-l-[2rem] hover:bg-gray-400"><span class="font-bold text-3xl inline-block">&gt;</span></button>
-        <button type="button" class="absolute top-[50%] bottom-[50%] left-0 py-[2rem] px-[1rem] bg-gray-100  border-y-2 border-l-2 border-gray-600 flex items-center rounded-r-[2rem] hover:bg-gray-400"><span class="font-bold text-3xl inline-block">&lt;</span></button>
+        <button type="button" class="absolute top-[50%] bottom-[50%] right-0 py-[2rem] px-[1rem] bg-gray-100  border-y-2 border-l-2 border-gray-600 flex items-center rounded-l-[2rem] hover:bg-gray-400" id="nexProduct"><span class="font-bold text-3xl inline-block" >&gt;</span></button>
+        <button type="button" class="absolute top-[50%] bottom-[50%] left-0 py-[2rem] px-[1rem] bg-gray-100  border-y-2 border-l-2 border-gray-600 flex items-center rounded-r-[2rem] hover:bg-gray-400" id="preProduct"><span class="font-bold text-3xl inline-block" >&lt;</span></button>
     </div>
     <!-- footer -->
     <?php require_once '../app/component/footer.php'?>
+    <script>
+        let currIndex = 0;
+         const items = document.getElementById('items');
+         const product = <?php echo json_encode($data['product']);?>;
+         const productContainer = document.querySelectorAll('.card-template');
 
+         function nextProduct() {
+    if (productContainer.length <= 4) {
+        return;
+    }
+    const indexBlock = Math.min(currIndex + 4, productContainer.length - 1);
+    productContainer[currIndex].style.display = "none";
+    productContainer[indexBlock].style.display = "block";
+    if (currIndex !== productContainer.length - 1) {
+        currIndex ++;
+    } else {
+        currIndex = productContainer.length - 1;
+    }
+    console.log(currIndex);
+}
+
+function preProduct() {
+    if (currIndex !== 0) {
+        currIndex--;
+    } else {
+        currIndex = 0;
+    }
+    if (productContainer.length <= 4) {
+        return;
+    }
+    const indexBlock = Math.min(currIndex + 4, productContainer.length - 1);
+    productContainer[currIndex].style.display = "block";
+    productContainer[indexBlock].style.display = "none";
+    console.log(currIndex);
+}
+
+
+         const next = document.getElementById('nexProduct');
+         const pre = document.getElementById('preProduct');
+         next.addEventListener('click', nextProduct);
+         pre.addEventListener('click',preProduct);
+    </script>
 </body>
 </html>

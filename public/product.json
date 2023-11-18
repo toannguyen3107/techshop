@@ -22,5 +22,29 @@
         "oriCost": "3.590.000",
         "currCost": "2.790.000₫", 
         "img": "/techshop/public/img/product/img.png"
+    },
+    "5":{
+        "name": "TECNO Spark 10 8GB 128GB - 5",
+        "oriCost": "3.590.000",
+        "currCost": "2.790.000₫", 
+        "img": "/techshop/public/img/product/img.png"
+    },
+    "6":{
+        "name": "TECNO Spark 10 8GB 128GB - 6",
+        "oriCost": "3.590.000",
+        "currCost": "2.790.000₫", 
+        "img": "/techshop/public/img/product/img.png"
+    },
+    "7":{
+        "name": "TECNO Spark 10 8GB 128GB - 7",
+        "oriCost": "3.590.000",
+        "currCost": "2.790.000₫", 
+        "img": "/techshop/public/img/product/img.png"
+    },
+    "8":{
+        "name": "TECNO Spark 10 8GB 128GB - 8",
+        "oriCost": "3.590.000",
+        "currCost": "2.790.000₫", 
+        "img": "/techshop/public/img/product/img.png"
     }
 }
