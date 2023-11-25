@@ -164,10 +164,10 @@
             var product = this.closest('.product');
             var quantity = product.querySelector('.quantity').value;
             var prod_id = product.id;
-
+            console.log(quantity);
             $.ajax({
                 method: "POST",
-                url: "../app/component/handleCart.php",
+                url: "/techshop/public/functions/handleCart.php",
                 data: {
                     "prod_id": prod_id,
                     "prod_quantity": quantity,
@@ -189,7 +189,7 @@
             if (!allProduct.contains(remainProduct))
             {
                 $.ajax({
-                    url: '../app/component/no_product.php',
+                    url: '/techshop/public/functions/no_product.php',
                     type: 'POST',
                     success: function(response) {
                         $(".main").html(response);
