@@ -1,0 +1,62 @@
+{
+    "1":{
+        "name": "BAN PHIM",
+        "img": "/techshop/public/img/category/banphim.png",
+        "link" : "#"
+    },
+    "2":{
+        "name": "CAMERA",
+        "img": "/techshop/public/img/category/camera.png",
+        "link" : "#"
+    },
+    "3":{
+        "name": "HEAD PHONE",
+        "img": "/techshop/public/img/category/headphone.png",
+        "link" : "#"
+    },
+    "4":{
+        "name": "LAPTOP",
+        "img": "/techshop/public/img/category/laptop.png",
+        "link" : "#"
+    },
+    "5":{
+        "name": "LOA",
+        "img": "/techshop/public/img/category/loa.png",
+        "link" : "#"
+    },
+    "6":{
+        "name": "SMARTPHONE",
+        "img": "/techshop/public/img/category/smartphone.png",
+        "link" : "#"
+    },
+    "7":{
+        "name": "ĐỒNG HỒ",
+        "img": "/techshop/public/img/category/swatch.png",
+        "link" : "#"
+    },
+    "8":{
+        "name": "TABLET",
+        "img": "/techshop/public/img/category/tablet.png",
+        "link" : "#"
+    },
+    "9":{
+        "name": "TIVI",
+        "img": "/techshop/public/img/category/tivi.png",
+        "link" : "#"
+    },
+    "10":{
+        "name": "PHỤ KIỆN",
+        "img": "/techshop/public/img/category/phukien.png",
+        "link" : "#"
+    },
+    "11":{
+        "name": "MÁY IN",
+        "img": "/techshop/public/img/category/printer.png",
+        "link" : "#"
+    },
+    "12":{
+        "name": "ỐP LƯNG",
+        "img": "/techshop/public/img/category/oplung.png",
+        "link" : "#"
+    }
+}
