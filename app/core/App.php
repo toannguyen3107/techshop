@@ -6,6 +6,7 @@
 
 
         public function __construct(){
+
             $url = $this->parseUrl();
             // print_r($url);
 

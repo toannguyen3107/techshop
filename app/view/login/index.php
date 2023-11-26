@@ -47,7 +47,7 @@
 
 	<!--                    sign-in                          -->
 	<div class="form-container sign-in-container">
-		<form action="#">
+		<form action="#" name='login'>
 			<h1>Sign in</h1>
 			<div class="social-container">
 				<a href="#" class="social">
@@ -68,11 +68,11 @@
 				
 			</div>
 			<span>or use your account</span>
-			<input type="email" placeholder="Email" />
-			<input type="password" placeholder="Password" />
+			<input type="text" placeholder="Username" name="name"/>
+			<input type="password" placeholder="Password" name="password"/>
 			<a href="#">Forgot your password?</a>
 			<div>
-			<button>Sign In</button>
+			<button >Sign In</button>
 			<button id="signUp">Sign Up</button>
 			</div>
 			
