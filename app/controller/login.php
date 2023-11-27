@@ -7,18 +7,23 @@ class Login extends Controller{
         $this->view('login/index', []);
     }
     public function login(){
-        // if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        //     $email = $_POST['email'];
-        //     $password = $_POST['password'];
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $user = $_POST['name'];
+            $pass = $_POST['password'];
 
-        //     // Validate and sanitize input
-        //     // ...
-
-        //     $userModel = $this->model('UserModel');
-        //     $userModel->login($email, $password);
-        // }
-        $user = $this->model('User');
-        $result = $user->login();
+            // Validate and sanitize input
+            // ...
+            echo $user. ' - '. $pass;
+            $userModel = $this->model('User');
+            $userModel->login($user, $pass);
+        }else{
+            echo "don't post";
+        }
+        if(isset($_SESSION['login']) && $_SESSION['login']){
+            header('location: /techshop');
+        }else{
+            echo "false connect";
+        }
     }
     public function logout(){
         echo "it's working - out";

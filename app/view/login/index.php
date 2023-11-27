@@ -47,7 +47,7 @@
 
 	<!--                    sign-in                          -->
 	<div class="form-container sign-in-container">
-		<form action="#" name='login'>
+		<form action="/techshop/public/login/login" name='login' method="post">
 			<h1>Sign in</h1>
 			<div class="social-container">
 				<a href="#" class="social">
@@ -72,7 +72,7 @@
 			<input type="password" placeholder="Password" name="password"/>
 			<a href="#">Forgot your password?</a>
 			<div>
-			<button >Sign In</button>
+			<button type="submit">Sign In</button>
 			<button id="signUp">Sign Up</button>
 			</div>
 			
@@ -88,13 +88,12 @@
 			<div class="overlay-panel overlay-right">
 				<h1>Xin chào !</h1>
 				<p>Hảy đăng nhập để trải trải nghiệm dịch vụ của chúng tôi</p>
-				
 			</div>
 		</div>
 	</div>
 </div>
-
-<script src="/techshop/app/view/login/index.js"></script>
+<!-- 
+<script src="/techshop/app/view/login/index.js"></script> -->
 
 </body>
 </html>
