@@ -90,9 +90,9 @@
             </div>
             <div class="flex bg-[#E2F9EC] h-40 shadow-lg align-middle px-8 text-xl" style="height: 6rem; border: solid grey 1px; align-items: center;">
                <span class="mr-auto">Tổng thanh toán: <span class="text-[#266E4F] text-xl total-payment"> <?php echo number_format($totalPrice, 0, '', '.');?> ₫</span></span>
-               <button class="bg-[#266E4F] hover:bg-[#113c2a] text-white py-2 px-4 rounded">
+               <a href="/techshop/public/payment/index"><button class="bg-[#266E4F] hover:bg-[#113c2a] text-white py-2 px-4 rounded">
                 Mua hàng
-                </button>
+                </button></a>
             </div>
         </div>
     </div>
