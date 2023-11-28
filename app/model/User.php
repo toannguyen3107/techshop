@@ -22,7 +22,7 @@
                 echo "Error: " . $e->getMessage();
             }
             require_once('../app/component/close.php');
-            return $result;
+            return $result; 
         }
         public function getUser(){
             require_once('../app/component/connect.php'); //connect database
