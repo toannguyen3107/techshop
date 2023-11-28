@@ -9,11 +9,7 @@
 <body>
     <?php
         require_once('../app/component/nav.php');
-        foreach($data as $key => $val ){
-            echo $key . '-' . $val .'<br>';
-        }
     ?>
-
     <?php require_once('../app/component/footer.php');?>
 </body>
 </html>

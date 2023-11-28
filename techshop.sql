@@ -8,10 +8,11 @@ CREATE TABLE User (
     user_id INT PRIMARY KEY,
     user_name VARCHAR(255) NOT NULL,
     password TEXT NOT NULL,
-    email VARCHAR(40),
+    email VARCHAR(40) NOT NULL,
     first_name VARCHAR(40),
     last_name VARCHAR(40),
     phone INT,
+    avatar VARCHAR(70),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     modified_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );

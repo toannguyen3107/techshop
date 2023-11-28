@@ -119,7 +119,7 @@
 <script>
     $(document.ready).ready($.ajax(
         {
-            url: '/techshop/public/home/apiname',
+            url: '/techshop/public/api/name',
             method: 'GET',
             success: function(response){
                 console.log(response);
