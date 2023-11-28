@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.1.1/flowbite.min.css"  rel="stylesheet" />
-<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.1.1/flowbite.min.css"  rel="stylesheet" /> -->
+<!-- <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script> -->
     <title>Home | TECHSHOP</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 	
@@ -40,10 +40,10 @@
 			<input type="text" placeholder="Name" />
 			<input type="email" placeholder="Email" />
 			<input type="password" placeholder="Password" />
-			<input type="confirm password" placeholder="" />
+			<!-- <input type="confirm password" placeholder="" /> -->
 			<div>
-				<button>Sign Up</button>
-				<button id="signIn">Sign In</button>
+				<button >Sign Up</button>
+				<button id="signIn" type="button">Sign In</button>
 			</div>
 			
 		</form>
@@ -77,7 +77,7 @@
 			<a href="#">Forgot your password?</a>
 			<div>
 			<button type="submit">Sign In</button>
-			<button id="signUp">Sign Up</button>
+			<button id="signUp" type="button">Sign Up</button>
 			</div>
 			
 		</form>
@@ -97,7 +97,7 @@
 	</div>
 </div>
 
-<!-- <script src="/techshop/app/view/login/index.js"></script> -->
+<script src="/techshop/app/view/login/index.js"></script>
 
 </body>
 </html>
