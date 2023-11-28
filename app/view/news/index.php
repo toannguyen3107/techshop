@@ -13,14 +13,12 @@
     <div class="container p-2 flex flex-row mx-auto  justify-center ">
         <!------------- left---------- -->
         <div class="me-4" style="width:70%">
+
             <a href="#" class=" flex flex-col items-center bg-[#E2F9EC] border border-gray-200 rounded-lg shadow md:flex-row md:max-w-sx hover:bg-[#c4f2d9]">
-    
 
                 <div id="indicators-carousel" class="relative w-full" data-carousel="static">
                     <!-- Carousel wrapper -->
-                   
                     <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
-                         
                         <?php 
                         $host = 'localhost';  // Nếu MySQL server chạy trên localhost
                         $dbname = 'news';

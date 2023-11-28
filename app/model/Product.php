@@ -10,5 +10,8 @@
             $data = json_decode($data);
             return $data;
         }
+        public function getPro(){
+            
+        }
     }
 ?>
