@@ -1,5 +1,5 @@
 ### TECHSHOP
 run css
 ```bash
-npx tailwindcss -i ./public/input.css -o ./public/output.css --watch
+    current: cdn for tailwind, it is included in head.php (app/component)
 ``` 

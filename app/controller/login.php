@@ -21,12 +21,18 @@ class Login extends Controller{
         }
         if(isset($_SESSION['login']) && $_SESSION['login']){
             header('location: /techshop');
+            exit();
         }else{
             echo "false connect";
         }
     }
     public function logout(){
-        echo "it's working - out";
+        session_unset();
+        session_destroy();
+        $_SESSION = array();
+        //
+        header('location: /techshop');
+        exit();
     }
 }
 ?>
