@@ -7,7 +7,7 @@
     <!-- <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script> -->
 </head>
 <body>
-
+<?php require_once '../app/component/nav.php'?>
     <!-- -------------------NEWS data-carousel------------------------ -->
     <div class="container p-2 flex flex-row mx-auto flex-wrap justify-center ">
         <!------------- left---------- -->
@@ -17,57 +17,40 @@
 
                 <div id="indicators-carousel" class="relative w-full" data-carousel="static">
                     <!-- Carousel wrapper -->
+                   
                     <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
-                         <!-- Item 1 -->
-                        <div class="hidden duration-700 ease-in-out flex flex-row" data-carousel-item="active">
-                            <img src="/techshop/public/img/news/image/27in-imac-2020-studio-01-100854622-orig.webp" class="w-full">
+                         
+                        <?php 
+                         try {
+                            $host = 'localhost';  // Nếu MySQL server chạy trên localhost
+                            $dbname = 'news';
+                            $username = 'root';   // Tên người dùng MySQL, thường là "root" cho localhost
+                            $password = ''; 
+                            $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+                        
+                            // Thiết lập chế độ lỗi để báo cáo tất cả các lỗi
+                            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                    
+                            $query = "SELECT * FROM news";
+                            $stmt = $conn->query($query);
+                        
+                            // Lấy tất cả các dòng dữ liệu từ kết quả truy vấn
+                            $news = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                            forEach ($news as $newsItem) {
+                            echo '<div class="hidden duration-700 ease-in-out flex flex-row" data-carousel-item>';
+                            echo '<img src="'.$newsItem['image'].'" class="w-full">';
+                            echo '<div class="flex flex-col p-4 leading-normal justify-items-center justify-center max-w-sm">';
+                            echo '<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">'.$newsItem['name'].'</h5>';
+                            echo '<p class="mb-3 font-normal text-gray-700 dark:text-gray-400">'.substr($newsItem['description'],27,200).'...</p>';
+                            echo '</div>';
+                            echo '</div>';
+                            }
                             
-                            <div class="flex flex-col p-4 leading-normal justify-items-center justify-center max-w-sm">
-                                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
-                                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-                            </div>
-                            
-                        </div>
-                         <!-- Item 1 -->
-                         <div class="hidden duration-700 ease-in-out flex flex-row" data-carousel-item="active">
-                            <img src="/techshop/public/img/news//image/27in-imac-2020-studio-01-100854622-orig.webp" class="w-full">
-                            
-                            <div class="flex flex-col p-4 leading-normal justify-items-center justify-center max-w-sm">
-                                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
-                                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-                            </div>
-                            
-                        </div>
-                         <!-- Item 1 -->
-                         <div class="hidden duration-700 ease-in-out flex flex-row" data-carousel-item="active">
-                            <img src="/techshop/public/img/news//image/27in-imac-2020-studio-01-100854622-orig.webp" class="w-full">
-                            
-                            <div class="flex flex-col p-4 leading-normal justify-items-center justify-center max-w-sm">
-                                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
-                                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-                            </div>
-                            
-                        </div>
-                         <!-- Item 1 -->
-                         <div class="hidden duration-700 ease-in-out flex flex-row" data-carousel-item="active">
-                            <img src="/techshop/public/img/news//image/27in-imac-2020-studio-01-100854622-orig.webp" class="w-full">
-                            
-                            <div class="flex flex-col p-4 leading-normal justify-items-center justify-center max-w-sm">
-                                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
-                                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-                            </div>
-                            
-                        </div>
-                         <!-- Item 1 -->
-                         <div class="hidden duration-700 ease-in-out flex flex-row" data-carousel-item="active">
-                            <img src="/techshop/public/img/news//image/27in-imac-2020-studio-01-100854622-orig.webp" class="w-full">
-                            
-                            <div class="flex flex-col p-4 leading-normal justify-items-center justify-center max-w-sm">
-                                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
-                                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-                            </div>
-                            
-                        </div>
+                        } catch (PDOException $e) {
+                            echo '<span style="color:red;"> fail: ' . $e->getMessage().'</span>';
+                        }
+                        // $conn = null;
+                         ?>
                         
                     </div>
                     <!-- Slider indicators -->
@@ -147,7 +130,7 @@
     </div>
 
     <!------------------------- news list ---------------------------------------->
-<div class="flex flex-row justify-between container mx-auto">
+<div class="flex flex-row justify-between container mx-auto mb-4">
     <div class="mx-4 max-w-sm bg-gray-300 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
         <a href="#">
             <img class="rounded-t-lg" src="/techshop/public/img/news/image/ipad-pro-2021-11inch-grey_3.webp" alt="anh san pham" />
@@ -211,7 +194,7 @@
 
     
     
-
+<?php require_once '../app/component/footer.php'?>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.1.1/flowbite.min.js"></script>
 </body>
