@@ -13,13 +13,9 @@
         <!------------- left---------- -->
         <div class="me-4" style="width:70%">
             <a href="#" class=" flex flex-col items-center bg-gray-300 border border-gray-200 rounded-lg shadow md:flex-row md:max-w-sx hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-    
-
                 <div id="indicators-carousel" class="relative w-full" data-carousel="static">
                     <!-- Carousel wrapper -->
-                   
                     <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
-                         
                         <?php 
                         $host = 'localhost';  // Nếu MySQL server chạy trên localhost
                         $dbname = 'news';

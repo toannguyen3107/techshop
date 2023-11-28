@@ -13,7 +13,7 @@ class Login extends Controller{
 
             // Validate and sanitize input
             // ...
-            echo $user. ' - '. $pass;
+            // echo $user. ' - '. $pass;
             $userModel = $this->model('User');
             $userModel->login($user, $pass);
         }else{
