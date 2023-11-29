@@ -85,19 +85,19 @@
                 <img src="/techshop/public/img/payment/cash-icon.png" alt="cash-logo" class="mr-4">
                 <span class="text-xl mr-auto">Phương thức thanh toán</span>
                 <div class="flex ml-2 mt-2">
-                    <button type="button" class="flex text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-[#1C543C] font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
+                    <button type="button" class="flex text-gray-900 bg-[#B4EFD0] hover:bg-[#55dca2] border border-[#266e4f] focus:ring-4 focus:outline-none focus:ring-[#1C543C] font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#266e4f] me-2 mb-2">
                     <img src="https://cdn-icons-png.flaticon.com/512/5229/5229335.png" alt="icon" class="w-6 mr-2">
                     Thanh toán khi nhận hàng
                     </button>
                 </div>
-                <div class="flex mt-2">
-                    <button type="button" class="flex text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-[#1C543C] font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
+                <div class="flex ml-2 mt-2">
+                    <button type="button" class="flex text-gray-900 bg-[#B4EFD0] hover:bg-[#55dca2] border border-[#266e4f] focus:ring-4 focus:outline-none focus:ring-[#1C543C] font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#266e4f] me-2 mb-2">
                     <img src="https://cdn.iconscout.com/icon/free/png-256/free-mastercard-3521564-2944982.png" alt="icon" class="w-6 mr-2">
                     MasterCard
                     </button>
                 </div>
                 <div class="flex ml-2 mt-2">
-                    <button type="button" class="flex text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-[#1C543C] font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2">
+                    <button type="button" class="flex text-gray-900 bg-[#B4EFD0] hover:bg-[#55dca2] border border-[#266e4f] focus:ring-4 focus:outline-none focus:ring-[#1C543C] font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#266e4f] me-2 mb-2">
                     <img src="https://developers.momo.vn/v3/assets/images/circle-logo-custom-16cb24e3ed26349c467cb2e932000fde.png" alt="icon" class="w-6 mr-2">
                     Momo
                     </button>
@@ -123,6 +123,8 @@
             </div>
         </div>
     </div>
+    <script>
+    </script>
     <?php require_once '../app/component/footer.php'?>
 </body>
 </html>

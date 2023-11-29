@@ -14,12 +14,111 @@
     
 </head>
 <body>
-	<?php
+<?php
+
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    
+    $name = $_POST["name"];
+    $phone = $_POST["phone"];
+    $email = $_POST["email"];
+    $pwd = $_POST["password"];
+	$passwordAgain = $_POST["passwordAgain"];
+	
+	
+    $flag = true;
+    $nameEr  = $emailEr = $passwordEr = $passwordAgainEr = '';
+    // Kiểm tra dữ liệu đầu vào
+   
+
+
+    if( strlen($name) > 255) {
+        $flag = false;
+        $nameEr = 'invalid name (string 5-40 characters)';
+    }
+	if( strlen($email) < 2) {
+        $flag = false;
+        $nameEr = 'invalid email';
+    }
+	if( strlen($pwd) < 8) {
+        $flag = false;
+        $passwordEr = 'invalid password more than 8 characters';
+		
+    }
+	
+	if($pwd != $passwordAgain) {
+		$flag = false;
+		$passwordAgainEr='invalid';
+	}
+
+    if ($flag) {
+        // Kết nối đến cơ sở dữ liệu
+    try {
+        $host = 'localhost';  // Nếu MySQL server chạy trên localhost
+        $dbname = 'techshop';
+        $username = 'root';   // Tên người dùng MySQL, thường là "root" cho localhost
+        $password = ''; 
+        $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+		// Thiết lập chế độ lấy dữ liệu theo mảng kết hợp
+		$conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+        // Thiết lập chế độ lỗi để báo cáo tất cả các lỗi
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		// Kiểm tra sự tồn tại của email
+		$sql = "SELECT COUNT(*) as count FROM User WHERE email = :email";
+		$stmt = $conn->prepare($sql);
+		$stmt->bindParam(':email', $email, PDO::PARAM_STR);
+		$stmt->execute();
+
+		$result = $stmt->fetch(PDO::FETCH_ASSOC);
+    	$count = $result['count'];
+		
+		// 
+		// Kiểm tra sự tồn tại của user_name
+		$sql2 = "SELECT COUNT(*) as count2 FROM User WHERE user_name = :name";
+		$stmt2 = $conn->prepare($sql2);
+		$stmt2->bindParam(':name', $name, PDO::PARAM_STR);
+		$stmt2->execute();
+
+		$result2 = $stmt2->fetch(PDO::FETCH_ASSOC);
+    	$count2 = $result2['count2'];
+		$flag_available =true;
+	// Kiểm tra kết quả và chèn dữ liệu nếu email không tồn tại
+	if ($count > 0) {
+    	$emailEr="Đã tồn tại email này trong hệ thống";
+		$flag_available =false;
+} 	if ($count2 > 0) {
+		$nameEr="Đã tồn tại User Name này trong hệ thống";
+		$flag_available =false;
+} 
+	if($flag_available) {
+        // Truy vấn để thêm dữ liệu mới
+        $query = "INSERT INTO User (user_name, password, email) VALUES (:name, :password, :email)";
+        $stmt1 = $conn->prepare($query);
+        
+        $stmt1->bindParam(':name', $name);
+        $stmt1->bindParam(':password', $pwd);
+        $stmt1->bindParam(':email', $email);
+        $stmt1->execute();
+
+        echo " <span style='color:green;'>Add Success</span> ";
+		$name = $phone = $email = $pwd = $passwordAgain = '';
+    }
+} catch (PDOException $e) {
+        echo '<span style="color:red;"> Add fail: ' . $e->getMessage().'</span>';
+    }
+    $conn = null;
+    }
+    
+}
+?>
+<?php
 		if(!isset($_SESSION['login'])){
 	?>
     <div class="container" id="container">
 	<div class="form-container sign-up-container">
-		<form action="#">
+
+
+		<form method="post">
 			<h1>Sign Up</h1>
 			
 			<div class="social-container">
@@ -40,16 +139,44 @@
 				</a>
 			</div>
 			<span>or use your email for registration</span>
-			<input type="text" placeholder="Name" />
-			<input type="email" placeholder="Email" />
-			<input type="password" placeholder="Password" />
-			<!-- <input type="confirm password" placeholder="" /> -->
+
+			
+			<input type="text" placeholder="Name" name="name" value="<?php echo $name ?>"/>
+			<div style="width: 100%; display:flex; justify-content: flex-start;">
+			<?php
+                echo ' <span style="color:red;" > *'. $nameEr .'</span> '; 
+                ?>
+			</div>
+			
+			
+			<input type="email" placeholder="Email" name="email" value="<?php echo $email ?>"/>
+			<div style="width: 100%; display:flex; justify-content: flex-start;">
+			<?php
+                echo ' <span style="color:red;"> *'. $emailEr .'</span> '; 
+                ?>
+			</div>
+			
+			<input type="password" placeholder="Password" name="password" value="<?php echo $pwd ?>"/>
+			<div style="width: 100%; display:flex; justify-content: flex-start;">
+			<?php
+                echo ' <span style="color:red;"> *'. $passwordEr .'</span> '; 
+                ?>
+			</div>
+			<input type="password" placeholder="Password Again"  name="passwordAgain"/>
+			<div style="width: 100%; display:flex; justify-content: flex-start;">
+			<?php
+                echo ' <span style="color:red;"> *'. $passwordAgainEr .'</span> '; 
+                ?>
+			</div>
+
 			<div>
-				<button >Sign Up</button>
+				<button type="submit" >Sign Up</button>
 				<button id="signIn" type="button">Sign In</button>
 			</div>
 			
 		</form>
+
+
 	</div>
 
 	<!--                    sign-in                          -->

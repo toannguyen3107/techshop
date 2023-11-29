@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.1.1/flowbite.min.css"  rel="stylesheet" />
-    
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>
 <body>
 <?php require_once '../app/component/nav.php'?>
@@ -96,8 +96,10 @@
             echo ' <ul class="my-4 space-y-3">';
             $i =1;
             forEach ($papers2 as $paper2Item) {
+                // $query_string = http_build_query($paper2Item);
+                // $query_string = $query_string.'"';
                 echo '<li>
-                <a href="#" class="flex items-center p-3 text-base font-bold text-gray-900 rounded-lg bg-[#55dca2] hover:bg-[#266e4f] group hover:shadow ">
+                <a href="/techshop/public/paper/index?id='.$paper2Item['id'].'" class="flex items-center p-3 text-base font-bold text-gray-900 rounded-lg bg-[#55dca2] hover:bg-[#266e4f] group hover:shadow ">
                 <button class="btn bg-[#266e4f] w-8 h-8 rounded-md">'.$i.'</button>
                 <span class="flex-1 ms-3">'.$paper2Item['name'].'</span>
                 </a>
@@ -108,26 +110,30 @@
         </div>
 
     </div>
-
+    <div  class="flex flex-col ">
     <!------------------------- news list ---------------------------------------->
-<div class="flex flex-row justify-between container mx-auto mb-4">
+    <div  id="adContainer" class="flex flex-row justify-between container mx-auto mb-4 flex-wrap">
     <?php 
-
-     $query1 = "SELECT DISTINCT * FROM paper order by RAND() limit 3";
+    $offset = isset($_GET['offset']) ? intval($_GET['offset']) : 0;
+    $limit = isset($_GET['limit']) ? intval($_GET['limit']) : 3;
+    
+    // Truy vấn CSDL
+    $query1 = "SELECT * FROM paper  LIMIT $offset,$limit";
+    //  $query1 = "SELECT DISTINCT * FROM paper order by RAND() limit 3";
      $stmt1 = $conn->query($query1);
  
      // Lấy tất cả các dòng dữ liệu từ kết quả truy vấn
      $papers = $stmt1->fetchAll(PDO::FETCH_ASSOC);
-     forEach ($papers as $papersItem) {
-        echo '<div class="relative min-h-full mx-4 max-w-sm bg-[#c4f2d9]  hover:bg-[#81e4b4] border border-gray-200 rounded-lg shadow ">
+     forEach ($papers as $paperItem) {
+        echo '<div class="relative min-h-full mx-4 max-w-sm bg-[#c4f2d9]  hover:bg-[#81e4b4] border border-gray-200 rounded-lg shadow mb-4" style="min-width: 20rem;">
         <a href="#" class="d-flex">';
-        echo '<img class="rounded-t-lg p-3 max-w-20" src="'.$papersItem['image'].'" anh san pham" />';
+        echo '<img class="rounded-t-lg p-3 max-w-20" src="'.$paperItem['image'].'" anh san pham" />';
         echo '</a>';
         echo '<div class="px-4 pb-10">
                 <a href="#">
                     <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">'.$paperItem['name'].'</h5>
                 </a>';
-        echo '<p class="mb-3 font-normal text-gray-700 ">'.substr($papersItem['description'],27,120).'...</p>';
+        echo '<p class="mb-3 font-normal text-gray-700 ">'.substr($paperItem['description'],27,120).'...</p>';
         echo '<a href="#" class="absolute bottom-2 left-4 inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 ">
                     Read more
                     <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true"  fill="none" viewBox="0 0 14 10">
@@ -138,13 +144,38 @@
         echo '</div>';
         
      }
-    } catch (PDOException $e) {
-        echo '<span style="color:red;"> fail: ' . $e->getMessage().'</span>';
-    }
     ?>
     
 </div>
+<button id="loadMoreBtn" class="mt-4 px-4 py-2 bg-blue-500 text-white rounded-md">Xem thêm</button>
+</div>
+<?php
+} catch (PDOException $e) {
+    echo '<span style="color:red;"> fail: ' . $e->getMessage().'</span>';
+}
+?>
 
+<script>
+$(document).ready(function () {
+    var offset = 0; // Khai báo offset và limit ở đây
+    var limit = 6;
+    $("#loadMoreBtn").on("click", function () {
+        // Gọi Ajax để lấy dữ liệu mới
+        $.ajax({
+            type: "GET",
+            url: "/techshop/app/view/news/ajax.php", // Đặt đường dẫn đến script xử lý truy vấn CSDL ở đây
+            data: { offset: offset, limit: limit },
+            success: function (data) {
+                // Thêm dữ liệu mới vào container
+                $("#adContainer").html(data);
+                
+                // Cập nhật offset
+                 limit+=3;
+            }
+        });
+    });
+});
+</script>
 
     
     

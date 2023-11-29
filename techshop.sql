@@ -42,10 +42,57 @@ VALUES
     ('jane_smith', 'securepass', 'jane.smith@example.com', 'Jane', 'Smith', 987654321),
     ('bob_jones', 'pass123', 'bob.jones@example.com', 'Bob', 'Jones', 555555555);
 
--- -- Sample data for User_payment table
--- INSERT INTO User_payment (user_id, payment_type, provider, account_no, expiry)
--- VALUES
---     (1, 'Credit Card', 'VISA', 1234567890123456, '2023-12-31'),
---     (2, 'PayPal', 'PayPal Inc.', 9876543210, '2024-06-30'),
---     (3, 'Debit Card', 'MasterCard', 5555444433331111, '2023-09-15');
+/* Product Table */
+CREATE TABLE `product` (
+  `id` INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  `name` VARCHAR(255),
+  `price` INT,
+  `man_hinh` VARCHAR(255),
+  `luotmua` INT,
+  `created_at` DATETIME,
+  `updated_at` DATETIME,
+  `deleted` INT,
+  `mo_ta` VARCHAR(1000),
+  `image` VARCHAR(1000),
+  `category` VARCHAR(255)
+);
 
+/* Phone Table */
+CREATE TABLE `phone` (
+  `id` INT PRIMARY KEY NOT NULL,
+  `kieumanhinh` VARCHAR(255),
+  `dungluong` VARCHAR(255),
+  FOREIGN KEY (`id`) REFERENCES `product`(`id`)
+);
+
+/* Laptop Table */
+CREATE TABLE `laptop` (
+  `id` INT PRIMARY KEY NOT NULL,
+  `CPU` VARCHAR(255),
+  `card` VARCHAR(255),
+  `pin` VARCHAR(255),
+  `khoiluong` VARCHAR(255),
+  FOREIGN KEY (`id`) REFERENCES `product`(`id`)
+);
+
+/* Tablet Table */
+CREATE TABLE `tablet` (
+  `id` INT PRIMARY KEY NOT NULL,
+  `kieumanhinh` VARCHAR(255),
+  `phamtram_giam` INT,
+  `dungluong` VARCHAR(255),
+  `ketnoi` VARCHAR(255),
+  FOREIGN KEY (`id`) REFERENCES `product`(`id`)
+);
+
+/* Cart Table */
+CREATE TABLE `cart` (
+  `userID` INT NOT NULL,
+  `productID` INT(11) NOT NULL,
+  `quantity` INT NOT NULL,
+  FOREIGN KEY (`userID`) REFERENCES `User`(`user_id`),
+  FOREIGN KEY (`productID`) REFERENCES `product`(`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+ALTER TABLE `cart`
+  ADD PRIMARY KEY (`userID`, `productID`);
