@@ -17,6 +17,7 @@
             $this->view('home/private', [
                 'name' => $info[0]['user_name'],
                 'email' => $info[0]['email'],
+                'password' => $info[0]['password'],
                 'firstname' => $info[0]['first_name'],
                 'lastname' => $info[0]['last_name'], // Corrected key name
                 'phone' => $info[0]['phone'],

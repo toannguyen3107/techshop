@@ -14,6 +14,9 @@
     
 </head>
 <body>
+	<?php
+		if(!isset($_SESSION['login'])){
+	?>
     <div class="container" id="container">
 	<div class="form-container sign-up-container">
 		<form action="#">
@@ -98,6 +101,11 @@
 </div>
 
 <script src="/techshop/app/view/login/index.js"></script>
-
+	<?php
+			}else{
+		header('location: /techshop');
+		exit();
+	}
+	?>
 </body>
 </html>
