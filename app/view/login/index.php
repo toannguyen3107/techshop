@@ -15,8 +15,7 @@
 </head>
 <body>
 <?php
-
-
+$nameEr  = $emailEr = $passwordEr = $passwordAgainEr = '';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     $name = $_POST["name"];
@@ -27,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	
 	
     $flag = true;
-    $nameEr  = $emailEr = $passwordEr = $passwordAgainEr = '';
+   
     // Kiểm tra dữ liệu đầu vào
    
 
