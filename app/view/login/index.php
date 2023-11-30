@@ -15,8 +15,7 @@
 </head>
 <body>
 <?php
-
-
+$nameEr  = $emailEr = $passwordEr = $passwordAgainEr = '';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     $name = $_POST["name"];
@@ -27,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	
 	
     $flag = true;
-    $nameEr  = $emailEr = $passwordEr = $passwordAgainEr = '';
+   
     // Kiểm tra dữ liệu đầu vào
    
 
@@ -111,7 +110,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
 }
 ?>
-    <div class="container right-panel-active" id="container">
+<?php
+		if(!isset($_SESSION['login'])){
+	?>
+    <div class="container" id="container">
 	<div class="form-container sign-up-container">
 
 
@@ -225,6 +227,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </div>
 
 <script src="/techshop/app/view/login/index.js"></script>
-
+	<?php
+			}else{
+		header('location: /techshop');
+		exit();
+	}
+	?>
 </body>
 </html>

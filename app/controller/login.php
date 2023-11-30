@@ -34,5 +34,28 @@ class Login extends Controller{
         header('location: /techshop');
         exit();
     }
+    public function changeinfo(){
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            if(!isset($_POST['email']) || !isset($_POST['firstname']) || !isset($_POST['lastname']) || !isset($_POST['phone']) || !isset($_POST['password'])){
+                echo 'wrong! you need provide full field.';
+            }else{
+                $email = $_POST['email'];
+                $fname = $_POST['firstname'];
+                $lname = $_POST['lastname'];
+                $phone = $_POST['phone'];
+                $pass = $_POST['password'];
+                $user = $this->model('User');
+                $user->updateUser([
+                    'password' => $pass,
+                    'email' => $email,
+                    'fname' => $fname,
+                    'lname' => $lname,
+                    'phone' => $phone
+                ]);
+                header('location: /techshop/public/home/private');
+                exit();
+            }
+        }
+    }
 }
 ?>
