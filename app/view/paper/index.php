@@ -10,7 +10,7 @@
     <div class="container p-2 flex flex-row mx-auto  justify-center ">
 <?php
 $host = 'localhost';  // Nếu MySQL server chạy trên localhost
-$dbname = 'news';
+$dbname = 'techshop';
 $username = 'root';   // Tên người dùng MySQL, thường là "root" cho localhost
 $password = ''; 
  try {
@@ -54,7 +54,7 @@ $password = '';
 
 
 <!-- ----------------------------list papers------------------------------------------------ -->
-<div class=" max-w-sm p-4 bg-[#E2F9EC] border border-gray-220 rounded-lg shadow sm:p-6 " style="width:30%">
+<div class=" max-w-sm p-4 bg-[#E2F9EC] border border-gray-220 rounded-lg shadow sm:p-6 " style="width:30%; max-height: 34rem;">
             <h5 class="mb-3 text-base font-semibold text-gray-900 md:text-xl">
             BAI VIET DUOC XEM NHIU NHAT
             </h5>
