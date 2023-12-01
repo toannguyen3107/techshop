@@ -1,22 +1,22 @@
-<footer class="w-[100vw] bg-[#D9D2D2] flex flex-row py-[1rem]">
+<footer class="w-[100vw] bg-[#D9D2D2] flex md:flex-row flex-column py-[1rem]">
     <div class="w-[50%] grid grid-rows-2 grid-cols-8">
-        <div class="col-span-1 row-span-1"></div>
+        <div class="col-span-1 md:row-span-1 row-span-2"></div>
         <div class="col-span-7">
             <p class="text-lg font-bold">Tổng đài hổ trợ</p>
             <p class="mb-[0.5rem]">&emsp;Gọi mua hàng xxxxxxxx (7h30 - 22h00)</p>
             <p class="mb-[0.5rem]">&emsp;Gọi khiếu nại xxxxxxxx (8h00 - 21h30)</p>
             <p class="mb-[0.5rem]">&emsp;Gọi bảo hành xxxxxxxx (8h00 - 21h00)</p>
         </div>
-        <div class="mt-[2vh] row-span-1 col-span-8">
+        <div class="mt-[2vh] md:row-span-1 row-span-2 col-span-8">
             <p class="text-lg font-bold ml-[5vw]">Phương thức thanh toán</p>
             <div class="w-[50%] ml-[7vw] bg-[#eee] p-[0.4rem] border-[3px] border-[#2a2a2a] rounded-lg grid grid-rows-2 grid-cols-4 gap-4">
-            <div class="col-span-1"><img src="/techshop/public/img/payment/image1.png" alt="payment 1"></div>
-            <div class="col-span-1"><img src="/techshop/public/img/payment/image2.png" alt="payment 2"></div>
-            <div class="col-span-1"><img src="/techshop/public/img/payment/image3.png" alt="payment 3"></div>
-            <div class="col-span-1"><img src="/techshop/public/img/payment/image4.png" alt="payment 4"></div>
-            <div class="col-span-1"><img src="/techshop/public/img/payment/image5.png" alt="payment 5"></div>
-            <div class="col-span-1"><img src="/techshop/public/img/payment/image6.png" alt="payment 6"></div>
-            <div class="col-span-1"><img src="/techshop/public/img/payment/image7.png" alt="payment 7"></div>
+                <div class="col-span-2 md:col-span-1"><img src="/techshop/public/img/payment/image1.png" alt="payment 1"></div>
+                <div class="col-span-2 md:col-span-1"><img src="/techshop/public/img/payment/image2.png" alt="payment 2"></div>
+                <div class="col-span-2 md:col-span-1"><img src="/techshop/public/img/payment/image3.png" alt="payment 3"></div>
+                <div class="col-span-2 md:col-span-1"><img src="/techshop/public/img/payment/image4.png" alt="payment 4"></div>
+                <div class="col-span-2 md:col-span-1"><img src="/techshop/public/img/payment/image5.png" alt="payment 5"></div>
+                <div class="col-span-2 md:col-span-1"><img src="/techshop/public/img/payment/image6.png" alt="payment 6"></div>
+                <div class="col-span-2 md:col-span-1"><img src="/techshop/public/img/payment/image7.png" alt="payment 7"></div>
             </div>
         </div>
     </div>

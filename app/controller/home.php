@@ -9,7 +9,7 @@
             $ele1 = $product->getProduct();
             $ele2 = $product->getCategory();
             
-            $this->view('home/index', ['product' => $ele1, 'category' => $ele2]);
+            $this->view('home/index', ['product'=> $ele1, 'category' => $ele2]);
         }
         public function private(){
             $user = $this->model('User');
