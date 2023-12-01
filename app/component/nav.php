@@ -1,7 +1,7 @@
 <?php
     if(!isset($_SESSION['login'])){
 ?>
-<nav class="sticky top-0 z-50 grid grid-cols-6 lg:grid-cols-12 p-3 bg-[#49BF8C] gap-3">
+<nav class="sticky top-0 z-50 grid grid-col-4 md:grid-cols-6 lg:grid-cols-12 p-3 bg-[#49BF8C] gap-3">
     <div class="col-span-1 flex flex-row items-center justify-center"><a href="/techshop"><img src="/techshop/public/img/large.png" alt="Logo techshop" class="h-[72px] w-[72px] rounded-full"></a>
             </div>     
         <div class="col-span-1 my-auto">
@@ -59,7 +59,7 @@
 
 </nav>
 <?php } else { ?>
-    <nav class="sticky top-0 z-50 grid grid-cols-6 lg:grid-cols-12 p-3 bg-[#49BF8C] gap-3">
+    <nav class="sticky top-0 z-50 grid grid-col-4 md:grid-cols-6 lg:grid-cols-12 p-3 bg-[#49BF8C] gap-3">
         <div class="col-span-1 flex flex-row items-center justify-center"><a href="/techshop"><img src="/techshop/public/img/large.png" alt="Logo techshop" class="h-[72px] w-[72px] rounded-full"></a>
         </div>    
         <div class="col-span-1 my-auto">

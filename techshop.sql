@@ -62,7 +62,7 @@ CREATE TABLE `phone` (
   `id` INT PRIMARY KEY NOT NULL,
   `kieumanhinh` VARCHAR(255),
   `dungluong` VARCHAR(255),
-  FOREIGN KEY (`id`) REFERENCES `product`(`id`)
+  CONSTRAINT fk_phone FOREIGN KEY (`id`) REFERENCES `product`(`id`)
 );
 
 /* Laptop Table */
@@ -72,7 +72,7 @@ CREATE TABLE `laptop` (
   `card` VARCHAR(255),
   `pin` VARCHAR(255),
   `khoiluong` VARCHAR(255),
-  FOREIGN KEY (`id`) REFERENCES `product`(`id`)
+  CONSTRAINT fk_laptop FOREIGN KEY (`id`) REFERENCES `product`(`id`)
 );
 
 /* Tablet Table */
@@ -82,7 +82,7 @@ CREATE TABLE `tablet` (
   `phamtram_giam` INT,
   `dungluong` VARCHAR(255),
   `ketnoi` VARCHAR(255),
-  FOREIGN KEY (`id`) REFERENCES `product`(`id`)
+  CONSTRAINT fk_tablet FOREIGN KEY (`id`) REFERENCES `product`(`id`)
 );
 
 /* Cart Table */
@@ -90,8 +90,8 @@ CREATE TABLE `cart` (
   `userID` INT NOT NULL,
   `productID` INT(11) NOT NULL,
   `quantity` INT NOT NULL,
-  FOREIGN KEY (`userID`) REFERENCES `User`(`user_id`),
-  FOREIGN KEY (`productID`) REFERENCES `product`(`id`)
+  CONSTRAINT fk_cart_user FOREIGN KEY (`userID`) REFERENCES `User`(`user_id`),
+  CONSTRAINT fk_cart_product FOREIGN KEY (`productID`) REFERENCES `product`(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 ALTER TABLE `cart`
@@ -179,3 +179,50 @@ ALTER TABLE `news`
 ALTER TABLE `paper`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
+
+
+
+
+
+-- insert 8, 9
+INSERT INTO product (id, name, price, man_hinh, luotmua, created_at, updated_at, deleted, mo_ta, image, category)
+VALUES
+    (8, 'MacBook Air', 1200, 'Retina', 30, NOW(), NOW(), 0, 'Lightweight laptop with Retina display', 'https://www.apple.com//v/macbook-air/q/images/overview/compare/compare_mba_m1__dsgh2hoxlkae_large.png', 'Laptop');
+
+-- Ensure there is an entry in the product table with the specified ID (id = 9)
+INSERT INTO product (id, name, price, man_hinh, luotmua, created_at, updated_at, deleted, mo_ta, image, category)
+VALUES
+    (9, 'Aus TUF', 1000, 'IPS', 20, NOW(), NOW(), 0, 'Laptop with powerful specifications', 'https://cdn.tgdd.vn/Products/Images/44/304867/asus-tuf-gaming-f15-fx506hf-i5-hn014w-1.jpg', 'Laptop');
+
+-- Now, you can insert data into the laptop table
+INSERT INTO laptop (id, CPU, card, pin, khoiluong)
+VALUES
+    (8, 'M1', 'Integrated', '15 hours', '1.2kg'),
+    (9, 'A15 Bionic', 'Integrated', 'N/A', 'N/A');
+-- Inserting more data into the product table
+INSERT INTO product (name, price, man_hinh, luotmua, created_at, updated_at, deleted, mo_ta, image, category)
+VALUES
+    ('Samsung Galaxy S21', 800, 'Dynamic AMOLED', 50, NOW(), NOW(), 0, 'High-end Android smartphone', 'https://cdn.tgdd.vn/Products/Images/42/267211/samsung-galaxy-s21-fe-1.jpg', 'Phone'),
+    ('Samsung Galaxy Tab S7', 600, 'Super AMOLED', 40, NOW(), NOW(), 0, 'Android tablet with S Pen support', 'https://cdn.tgdd.vn/Products/Images/522/225031/samsung-galaxy-tab-s7-vang-dong-1-org.jpg', 'Tablet'),
+    ('Dell XPS 13', 1500, 'InfinityEdge', 25, NOW(), NOW(), 0, 'Powerful laptop for productivity', 'https://cdn.tgdd.vn/Products/Images/44/314838/dell-xps-13-plus-9320-i5-71013325-1.jpg', 'Laptop'),
+    ('AirPods Max', 550, 'Over-ear', 30, NOW(), NOW(), 0, 'Premium over-ear headphones', 'https://cdn.tgdd.vn/Products/Images/54/315014/tai-nghe-bluetooth-airpods-pro-2nd-gen-usb-c-charge-apple-1.jpg', 'Accessory');
+
+-- Inserting corresponding entries into the phone table
+INSERT INTO phone (id, kieumanhinh, dungluong)
+VALUES
+    (8, 'Dynamic AMOLED', '128GB'),
+    (10, 'Super AMOLED', '256GB');
+
+-- Inserting corresponding entries into the tablet table
+INSERT INTO tablet (id, kieumanhinh, phamtram_giam, dungluong, ketnoi)
+VALUES
+    (8, 'Super AMOLED', 8, '256GB', 'Wi-Fi'),
+    (10, 'LCD', 12, '128GB', 'Wi-Fi + Cellular');
+
+-- Inserting corresponding entries into the laptop table
+INSERT INTO laptop (id, CPU, card, pin, khoiluong)
+VALUES
+    (10, 'Intel Core i7', 'Integrated', '10 hours', '1.2kg'),
+    (11, 'AMD Ryzen 5', 'Integrated', 'N/A', '1.5kg');
+
+
