@@ -11,25 +11,41 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/* Phone Table */
+CREATE TABLE `phone` (
+  `id` INT PRIMARY KEY NOT NULL,
+  `kieumanhinh` VARCHAR(255),
+  `dungluong` VARCHAR(255),
+  FOREIGN KEY (`id`) REFERENCES `product`(`id`)
+);
 
---
--- Database: `techshop`
---
+/* Laptop Table */
+CREATE TABLE `laptop` (
+  `id` INT PRIMARY KEY NOT NULL,
+  `CPU` VARCHAR(255),
+  `card` VARCHAR(255),
+  `pin` VARCHAR(255),
+  `khoiluong` VARCHAR(255),
+  FOREIGN KEY (`id`) REFERENCES `product`(`id`)
+);
 
--- --------------------------------------------------------
+/* Tablet Table */
+CREATE TABLE `tablet` (
+  `id` INT PRIMARY KEY NOT NULL,
+  `kieumanhinh` VARCHAR(255),
+  `phamtram_giam` INT,
+  `dungluong` VARCHAR(255),
+  `ketnoi` VARCHAR(255),
+  FOREIGN KEY (`id`) REFERENCES `product`(`id`)
+);
 
---
--- Table structure for table `cart`
---
-
+/* Cart Table */
 CREATE TABLE `cart` (
-  `userID` int(11) NOT NULL,
-  `productID` int(11) NOT NULL,
-  `quantity` int(11) NOT NULL
+  `userID` INT NOT NULL,
+  `productID` INT(11) NOT NULL,
+  `quantity` INT NOT NULL,
+  FOREIGN KEY (`userID`) REFERENCES `User`(`user_id`),
+  FOREIGN KEY (`productID`) REFERENCES `product`(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -285,7 +301,3 @@ ALTER TABLE `phone`
 ALTER TABLE `tablet`
   ADD CONSTRAINT `tablet_ibfk_1` FOREIGN KEY (`id`) REFERENCES `product` (`id`);
 COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
