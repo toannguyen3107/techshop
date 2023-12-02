@@ -31,7 +31,7 @@
                             // Thiết lập chế độ lỗi để báo cáo tất cả các lỗi
                             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                     
-                            $query = "SELECT * FROM news";
+                            $query = "SELECT * FROM paper ORDER BY views DESC LIMIT 5";
                             $stmt = $conn->query($query);
                         
                             // Lấy tất cả các dòng dữ liệu từ kết quả truy vấn
@@ -41,7 +41,7 @@
                             echo '<img src="'.$newsItem['image'].'" class="w-full">';
                             echo '<div class="flex flex-col p-4 leading-normal justify-items-center justify-center max-w-xs">';
                             echo '<h5 class="mb-2 text-2xl font-bold tracking-tight">'.$newsItem['name'].'</h5>';
-                            echo '<p class="mb-3 font-normal text-gray-700 ">'.substr($newsItem['description'],27,200).'...</p>';
+                            echo '<p class="mb-3 font-normal text-gray-700 ">'.substr($newsItem['description'],0,120).'...</p>';
                             echo '</div>';
                             echo '</div>';
                             }
@@ -85,7 +85,7 @@
         <!-- ----------------------------list papers------------------------------------------------ -->
         <div class=" max-w-sm p-4 bg-[#E2F9EC] border border-gray-220 rounded-lg shadow sm:p-6 " style="width:26% ;min-width:20rem;">
             <h5 class="mb-3 text-base font-semibold text-gray-900 md:text-xl">
-            BAI VIET DUOC XEM NHIU NHAT
+             BÀI VIẾT ĐƯỢC XEM NHIỀU NHẤT
             </h5>
             <?php
             $query2 = "SELECT * FROM paper ORDER BY views DESC LIMIT 5";
@@ -133,7 +133,7 @@
                 <a href="/techshop/public/paper/index?id='.$paperItem['id'].'">
                     <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">'.$paperItem['name'].'</h5>
                 </a>';
-        echo '<p class="mb-3 font-normal text-gray-700 ">'.substr($paperItem['description'],27,120).'...</p>';
+        echo '<p class="mb-3 font-normal text-gray-700 ">'.substr($paperItem['description'],0,120).'...</p>';
         echo '<a href="/techshop/public/paper/index?id='.$paperItem['id'].'" class="absolute bottom-2 left-4 inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 ">
                     Read more
                     <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true"  fill="none" viewBox="0 0 14 10">

@@ -45,8 +45,8 @@ $password = '';
         echo '<img src="'.$paper['image'].'" alt="Picture">';
         echo '</div>';
 
-        echo '<div class="text-[2rem]">'.substr($paper['description'],0,27).'</div>';
-        echo '<div class="text-[1rem]">'.substr($paper['description'],27).'</div>';
+        echo '<div class="text-[2rem]">Đặc điểm nổi bật</div>';
+        echo '<div class="text-[1rem]">'.($paper['description']).'</div>';
         echo '</div>';
         echo '</div>';
     }
@@ -56,7 +56,7 @@ $password = '';
 <!-- ----------------------------list papers------------------------------------------------ -->
 <div class=" max-w-sm p-4 bg-[#E2F9EC] border border-gray-220 rounded-lg shadow sm:p-6 " style="width:30%; max-height: 34rem;">
             <h5 class="mb-3 text-base font-semibold text-gray-900 md:text-xl">
-            BAI VIET DUOC XEM NHIU NHAT
+            BÀI VIẾT ĐƯỢC XEM NHIỀU NHẤT
             </h5>
             
         <?php
