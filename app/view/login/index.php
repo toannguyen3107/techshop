@@ -16,8 +16,9 @@
 <body>
 <?php
 $nameEr  = $emailEr = $passwordEr = $passwordAgainEr = '';
+$name  = $email = $password = $passwordAgain = '';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    
+	
     $name = $_POST["name"];
     $phone = $_POST["phone"];
     $email = $_POST["email"];
@@ -31,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
    
 
 
-    if( strlen($name) > 255) {
+    if( strlen($name) > 255 || strlen($name) == 0) {
         $flag = false;
         $nameEr = 'invalid name (string 5-40 characters)';
     }
@@ -47,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	
 	if($pwd != $passwordAgain) {
 		$flag = false;
-		$passwordAgainEr='invalid';
+		$passwordAgainEr='invalid again';
 	}
 
     if ($flag) {
@@ -100,7 +101,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt1->execute();
 
         echo " <span style='color:green;'>Add Success</span> ";
-		$name = $phone = $email = $pwd = $passwordAgain = '';
+		// $name = $phone = $email = $pwd = $passwordAgain = '';
     }
 } catch (PDOException $e) {
         echo '<span style="color:red;"> Add fail: ' . $e->getMessage().'</span>';
@@ -110,12 +111,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
 }
 ?>
-<?php
-		if(!isset($_SESSION['login'])){
-	?>
+
     <div class="container" id="container">
 	<div class="form-container sign-up-container">
-
+	<?php 
+	if ($_SERVER["REQUEST_METHOD"] == "POST"){
+	echo "<script>";
+	echo "container = document.getElementById('container');";
+	echo "container.classList.add('right-panel-active');";
+	echo "</script>";}
+	?>
 
 		<form method="post">
 			<h1>Sign Up</h1>
@@ -177,7 +182,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 	</div>
-
+	<?php
+		if(!isset($_SESSION['login'])){
+	?>
 	<!--                    sign-in                          -->
 	<div class="form-container sign-in-container">
 		<form action="/techshop/public/login/login" name='login' method="post">
