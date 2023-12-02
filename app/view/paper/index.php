@@ -4,10 +4,18 @@
     <?php require_once '../app/component/head.php';?>
     <title>Paper</title>
 </head>
+<style>
+ @media screen and (max-width: 992px) {
+    .listPaper {
+        display:none;
+    }  
+}
+
+</style>
 <body>
 <?php require_once '../app/component/nav.php'?>
-<div class="container p-2 flex flex-row mx-auto">
-    <div class="container p-2 flex flex-row mx-auto  justify-center ">
+<div class=" p-2 flex flex-row mx-auto">
+    <div class=" p-2 flex flex-row mx-auto  justify-center ">
 <?php
 $host = 'localhost';  // Nếu MySQL server chạy trên localhost
 $dbname = 'techshop';
@@ -28,8 +36,8 @@ $password = '';
         $stmt->bindParam(':id', $id);   
         $stmt->execute();
         $paper = $stmt->fetch(PDO::FETCH_ASSOC);
-        echo '<div class="main w-[80%]">';
-        echo '<div class="text-6xl font-semibold ">'.$paper['name'].'</div>';
+        echo '<div class="main w-[70%]">';
+        echo '<div class="text-[2rem] font-semibold ">'.$paper['name'].'</div>';
 
         echo ' <div class="content">  ';
         echo '<div class="text-gray-600 text-[1rem]">Ngay dang: '.$paper['dateRelease'].'</div>';
@@ -54,7 +62,7 @@ $password = '';
 
 
 <!-- ----------------------------list papers------------------------------------------------ -->
-<div class=" max-w-sm p-4 bg-[#E2F9EC] border border-gray-220 rounded-lg shadow sm:p-6 " style="width:30%; max-height: 34rem;">
+<div class="listPaper max-w-sm p-[1rem] bg-[#E2F9EC] border border-gray-220 rounded-lg shadow sm:p-6 " style="width:30%; max-height: 40rem;">
             <h5 class="mb-3 text-base font-semibold text-gray-900 md:text-xl">
             BÀI VIẾT ĐƯỢC XEM NHIỀU NHẤT
             </h5>
