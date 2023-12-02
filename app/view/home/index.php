@@ -1,48 +1,119 @@
+<?php $_SESSION['idx'] = 1;?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <?php require_once '../app/component/head.php';?>
     <title>Home | TECHSHOP</title>
-    
+    <script>
+    $(document).ready(function(){
+        $.ajax({
+            url: '/techshop/public/api/phonetop',
+                method: 'GET',
+                dataType: 'json', 
+                success: function(res){
+                    console.log(res);
+                    Object.entries(res).forEach(([key, value]) => {
+                      let div = '<div class="item col-span-3  md:col-span-3 border-2 border-black bg-[#fff] px-1 py-6 md:w-[80%] rounded-lg hover:bg-[#eee]">'
+                      div += '<img src="' + value.image +'"class="w-[130px] h-[150px] block mx-auto">';
+                      div += '<p class="text-lg font-semibold text-center">' + value.name+'</p>';
+                      div += '<p class="text-red-500 ms-3 mt-2">' + value.price+ 'đ</p>';
+                      div += '<button type="button" class="block mx-auto bg-green-400 text-gray-900 text-bold text-lg border-2 border-black px-4 py-1 rounded-lg hover:bg-green-600">Mua</button>'; 
+                      div += '</div>'; 
+                        $('#sale').append(div);
+                    });
+                },
+                error: function(e){
+                    console.error(e);
+                }
+        });
+        // product recommend
+        $('#more').click(function(){
+            $.ajax({
+                url: '/techshop/public/api/productrecommend',
+                method: 'GET',
+                dataType: 'json',
+                success: function(res){
+                    console.log(res);
+                    Object.entries(res).forEach(([key, value]) => {
+                      let div = '<div class="col-span-2 md:col-span-3 border-2 border-black bg-[#fff] px-1 py-6 md:w-[80%] rounded-lg hover:bg-[#eee]">'
+                      div += '<img src="' + value.image +'"class="w-[130px] h-[150px] block mx-auto">';
+                      div += '<p class="text-lg font-semibold text-center">' + value.name+'</p>';
+                      div += '<p class="text-red-500 ms-3 mt-2">' + value.price+ 'đ</p>';
+                      div += '<button type="button" class="block mx-auto bg-green-400 text-gray-900 text-bold text-lg border-2 border-black px-4 py-1 rounded-lg hover:bg-green-600">Mua</button>'; 
+                      div += '</div>'; 
+                      $(div).insertBefore('#more');
+                    });
+                },
+                error: function(e){
+                    console.error(e);
+                }
+            });
+        });
+        $('#phone').click(function(){
+            toggleTheme($(this));
+            apiGet('/techshop/public/api/phonetop');
+        });
+
+        $('#laptop').click(function(){
+            toggleTheme($(this));
+            apiGet('/techshop/public/api/laptoptop');
+        });
+
+        $('#other').click(function(){
+            toggleTheme($(this));
+        });
+        function apiGet(url){
+            $.ajax({
+                url: url,
+                method: 'GET',
+                dataType: 'json', 
+                success: function(res){
+                    console.log(res);
+                    $('#sale .item').remove();
+                    Object.entries(res).forEach(([key, value]) => {
+                      let div = '<div class="item  col-span-3 md:col-span-3 border-2 border-black bg-[#fff] px-1 py-6 md:w-[80%] rounded-lg hover:bg-[#eee]">'
+                      div += '<img src="' + value.image +'"class="w-[130px] h-[150px] block mx-auto">';
+                      div += '<p class="text-lg font-semibold text-center">' + value.name+'</p>';
+                      div += '<button type="button" class="block mx-auto bg-green-400 text-gray-900 text-bold text-lg border-2 border-black px-4 py-1 rounded-lg hover:bg-green-600">Mua</button>'; 
+                      div += '<p class="text-red-500 ms-3 mt-2">' + value.price+ 'đ</p>';
+                      div += '</div>';
+                    $('#sale').append(div);
+                    });
+                },
+                error: function(e){
+                    console.error(e);
+                }
+            });
+        }
+        function toggleTheme(element) {
+            if(!element.hasClass('selected')){
+                $('.selected').attr('class', 'cursor-pointer text-[#111] border-2 border-[#111] rounded-[0.5rem] text-center bg-[#fff] p-[0.3rem] mr-[0.5rem] font-bold text-[10px] lg:text-base');
+                element.attr('class', 'cursor-pointer selected text-[#fff] border-2 border-[#fff] rounded-[0.5rem] text-center bg-[#111] p-[0.3rem] mr-[0.5rem] font-bold text-[10px] lg:text-base');
+            }
+            
+        }
+    });
+</script>
 </head>
 <body class="overflow-x-hidden">
     <?php require_once '../app/component/nav.php'?>
     <div class="mx-auto"><img src="/techshop/public/img/adv.png" alt="Adv main page" width="100%"></div>        
-    <div class="none mx-auto w-[80%] bg-[#DC6C55] rounded-[1rem] mt-[1rem] lg:grid grid-rows-4 grid-cols-12 p-[1rem] relative">
-        <div class="col-span-2"><p class="text-[#fff] border-2 border-[#fff] rounded-[0.5rem] text-center bg-[#111] p-[0.3rem] mr-[0.5rem] font-bold text-[10px] lg:text-base">ĐIỆN THOẠI</p></div>
-        <div class="col-span-2"><p class="text-[#111] border-2 border-[#111] rounded-[0.5rem] text-center bg-[#fff] p-[0.3rem] mr-[0.5rem] font-bold text-[10px] lg:text-base">LAPTOP</p></div>
-        <div class="col-span-2"><p class="text-[#111] border-2 border-[#111] rounded-[0.5rem] text-center bg-[#fff] p-[0.3rem] mr-[0.5rem] font-bold text-[10px] lg:text-base">PHỤ KIỆN</p></div>
-        <div class="col-span-3"><p class="text-center text-sm lg:text-2xl font-bold text-white"><span class="text-[#BB0000]">HOT SALE</span> CUỐI TUẦN</p></div>
-        <div class="col-span-3">
-            <p class="text-center"><span class="font-bold  inline-block mr-[1rem]">BẮT ĐẦU SAU</span><span class="inline-block border-2 border-black p-1 bg-[#fff] mx-1">02</span>:<span class="inline-block border-2 border-black p-1 bg-[#fff] mx-1">06</span>:<span class="inline-block border-2 border-black p-1 bg-[#fff] mx-1">13</span>:<span class="inline-block border-2 border-black p-1 bg-[#fff] mx-1">21</span></p>
+    <div class="none mx-auto w-[80%] bg-[#DC6C55] rounded-[1rem] mt-[1rem] grid grid-cols-6 md:grid-cols-12 p-[1rem] relative gap-4" id="sale">
+        <div class="col-span-6 md:col-span-2"><p class="cursor-pointer selected text-[#fff] border-2 border-[#fff] rounded-[0.5rem] text-center bg-[#111] p-[0.3rem] mr-[0.5rem] font-bold text-[10px] lg:text-base" id="phone">ĐIỆN THOẠI</p></div>
+        <div class="col-span-6 md:col-span-2"><p class="cursor-pointer text-[#111] border-2 border-[#111] rounded-[0.5rem] text-center bg-[#fff] p-[0.3rem] mr-[0.5rem] font-bold text-[10px] lg:text-base" id="laptop">LAPTOP</p></div>
+        <div class="col-span-6 md:col-span-2"><p class="cursor-pointer text-[#111] border-2 border-[#111] rounded-[0.5rem] text-center bg-[#fff] p-[0.3rem] mr-[0.5rem] font-bold text-[10px] lg:text-base" id="other">Khác</p></div>
+        <div class="col-span-6 md:col-span-3"><p class="text-center text-sm lg:text-2xl font-bold text-white"><span class="text-[#BB0000]">HOT SALE</span> CUỐI TUẦN</p></div>
+        <div class="col-span-6 md:col-span-3">
+            <p class="text-center"><span class="font-bold inline-block mr-[1rem]">BẮT ĐẦU SAU</span><span class="inline-block border-2 border-black p-1 bg-[#fff] mx-1">02</span>:<span class="inline-block border-2 border-black p-1 bg-[#fff] mx-1">06</span>:<span class="inline-block border-2 border-black p-1 bg-[#fff] mx-1">13</span>:<span class="inline-block border-2 border-black p-1 bg-[#fff] mx-1">21</span></p>
         </div>
-        
-        <?php
-            $i = 0;
-            foreach($data['product'] as $product){
-                $i += 1;
-                if($i >= 5){
-                    $out = '<div class="card-template row-span-3 col-span-3 gap-3 bg-[#fff] rounded-[0.7rem] mx-auto p-[1rem] hover:border-2 hover:border-[#111] hover:bg-[#eee] py-[2rem]" style="display: none;" ><a href="#">';
-                }else{
-                    $out = '<div class="card-template row-span-3 col-span-3 gap-3 bg-[#fff] rounded-[0.7rem] mx-auto p-[1rem] hover:border-2 hover:border-[#111] hover:bg-[#eee] py-[2rem]" ><a href="#">';
-                }
-                
-                $out .= '<img src="'. $product->img .'" alt="image" class="mx-auto">';
-                $out .= '<p class="w-[80%] text-center">'. $product->name .'</p>';
-                $out .= '<p><span class="inliine-block mr-3 text-[#ED3419]">'. $product->currCost .'</span><span class="line-through">' . $product->oriCost . '</span></p></a></div>';
-                echo $out;
-            }
-        ?>
-        <button type="button" class="absolute top-[50%] bottom-[50%] right-0 py-[2rem] px-[1rem] bg-gray-100  border-y-2 border-l-2 border-gray-600 flex items-center rounded-l-[2rem] hover:bg-gray-400" id="nexProduct"><span class="font-bold text-3xl inline-block" >&gt;</span></button>
-        <button type="button" class="absolute top-[50%] bottom-[50%] left-0 py-[2rem] px-[1rem] bg-gray-100  border-y-2 border-l-2 border-gray-600 flex items-center rounded-r-[2rem] hover:bg-gray-400" id="preProduct"><span class="font-bold text-3xl inline-block" >&lt;</span></button>
     </div>
-    <div class="grid grid-cols-12 gap-3 w-[80%] mx-auto mt-[1rem] bg-[#eee] rounded-[1rem] p-[1rem]">
-            <div class="col-span-12">
+    <div class="grid grid-cols-4 md:grid-cols-12 gap-3 md:w-[80%] mx-auto mt-[1rem] bg-[#eee] rounded-[1rem] p-[1rem]">
+            <div class="col-span-4 md:col-span-12">
                 <p class="font-bold text-xl">DANH MỤC NỔI BẬT</p>
             </div>
             <?php 
                 foreach($data['category'] as $category){
-                    $out = '<div class="col-span-2 flex justify-center"><a href="'.$category->link.'">';
+                    $out = '<div class="col-span-2 md:col-span-2 flex justify-center"><a href="'.$category->link.'">';
                     $out .= '<img src="'. $category->img .'" alt="'. $category->name.'">';
                     $out .= '<p>'. $category->name .'</p>';
                     $out .= '</a></div>';
@@ -51,69 +122,11 @@
             ?>
     </div>
     
-    <div class="grid xl:grid-cols-10 lg:grid-cols-9 grid-col-10 gap-x-3 gap-y-5 mt-[1rem] w-[80%] mx-auto">
-        <div class="col-span-10 ml-[5vw]">
-            <p class="font-bold text-xl">GỢI Ý HÔM NAY</p>
-        </div>
-        <?php
-            $i = 0;
-            foreach($data['product'] as $product){
-                $i += 1;
-                if($i >= 11){
-                    $out = '<div class="col-span-5 lg:col-span-3 xl:col-span-2 gap-3 bg-[#24D882] opacity-30 rounded-[0.7rem] mx-auto p-[1rem] border-2 hover:border-[#111] hover:bg-[#eee] py-[2rem]" style="display: none;" ><a href="#">';
-                }else{
-                    $out = '<div class="col-span-5 lg:col-span-3 xl:col-span-2 gap-3 bg-[#24D882] opacity-80 rounded-[0.7rem] mx-auto p-[1rem] hover:border-2 hover:border-[#111] hover:bg-[#eee] py-[2rem]" ><a href="#">';
-                }
-                
-                $out .= '<img src="'. $product->img .'" alt="image" class="mx-auto" width="70px">';
-                $out .= '<p class="w-[70%] text-[0.7rem]">'. $product->name .'</p>';
-                $out .= '<p><span class="inliine-block mr-3 text-[#ED3419]">'. $product->currCost .'</span><span class="line-through">' . $product->oriCost . '</span></p></a></div>';
-                echo $out;
-            }
-        ?>
-        <button type="button" class="col-span-10 mx-auto mb-[1rem] bg-orange-500 border-2 border-[#111] rounded-[0.5rem] hover:bg-orange-300 py-[0.7rem] px-[1.3rem]"><a href="#">Xem Thêm</a></button>
+    <div class="block md:grid md:grid-cols-12 md:mt-[1rem]  gap-4 w-[80%] mx-auto" >
+        <div class="col-span-4 md:col-span-12 ml-[5vw] font-bold text-xl block">GỢI Ý HÔM NAY</div>
+        <button type="button" class="col-span-10 mx-auto mb-[1rem] bg-orange-500 border-2 border-[#111] rounded-[0.5rem] hover:bg-orange-300 py-[0.7rem] px-[1.3rem] active:bg-orange-700" id="more">Xem Thêm</button>
     </div>
     <!-- footer -->
     <?php require_once '../app/component/footer.php'?>
-    <script>
-        let currIndex = 0;
-         const items = document.getElementById('items');
-         const product = <?php echo json_encode($data['product']);?>;
-         const productContainer = document.querySelectorAll('.card-template');
-
-         function nextProduct() {
-    if (productContainer.length <= 4) {
-        return;
-    }
-    const indexBlock = Math.min(currIndex + 4, productContainer.length - 1);
-    productContainer[currIndex].style.display = "none";
-    productContainer[indexBlock].style.display = "block";
-    if (currIndex !== productContainer.length - 1) {
-        currIndex ++;
-    } else {
-        currIndex = productContainer.length - 1;
-    }
-}
-
-function preProduct() {
-    if (currIndex !== 0) {
-        currIndex--;
-    } else {
-        currIndex = 0;
-    }
-    if (productContainer.length <= 4) {
-        return;
-    }
-    const indexBlock = Math.min(currIndex + 4, productContainer.length - 1);
-    productContainer[currIndex].style.display = "block";
-    productContainer[indexBlock].style.display = "none";
-}
-
-
-         const next = document.getElementById('nexProduct');
-         const pre = document.getElementById('preProduct');
-         next.addEventListener('click', nextProduct);
-         pre.addEventListener('click',preProduct);
-    </script>
 </body>
 </html>
