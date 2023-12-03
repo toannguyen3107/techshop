@@ -36,7 +36,7 @@ $password = '';
         $stmt->bindParam(':id', $id);   
         $stmt->execute();
         $paper = $stmt->fetch(PDO::FETCH_ASSOC);
-        echo '<div class="main w-[70%]">';
+        echo '<div class="main w-[74%]">';
         echo '<div class="text-[2rem] font-semibold ">'.$paper['name'].'</div>';
 
         echo ' <div class="content">  ';
@@ -54,7 +54,7 @@ $password = '';
         echo '</div>';
 
         echo '<div class="text-[2rem]">Đặc điểm nổi bật</div>';
-        echo '<div class="text-[1rem]">'.($paper['description']).'</div>';
+        echo '<div class="text-[1rem] w-[80%]">'.($paper['description']).'</div>';
         echo '</div>';
         echo '</div>';
     }
@@ -91,8 +91,16 @@ $password = '';
         </div>
 
 </div>
-</div>
 
+</div>
+<a href="/techshop/public/news/index" class="flex justify-center items-center m-[1rem]">
+    <button type="button" class="text-[2rem] inline-flex items-center px-3 py-2  font-medium text-center text-white bg-[#3DBC72] rounded-lg hover:bg-[#55DCA2] hover:scale-110  w-[16rem] text-center flex flex-row justify-center">
+                         Trở về
+                        <svg xmlns="http://www.w3.org/2000/svg" class="ms-[1.4rem] w-[3rem] h-[2.6rem]" viewBox="0 0 77 73" fill="none">
+                    <path d="M38.5 0C17.2287 0 0 16.2481 0 36.3085C0 56.369 17.2287 72.617 38.5 72.617C59.7713 72.617 77 56.369 77 36.3085C77 16.2481 59.7713 0 38.5 0ZM38.5 9.07713V27.2314H67.375V45.3856H38.5V63.5399L9.625 36.3085L38.5 9.07713Z" fill="white"/>
+                    </svg>
+    </button>
+    </a>
 <?php
 } catch (PDOException $e) {
     echo '<span style="color:red;"> fail: ' . $e->getMessage().'</span>';

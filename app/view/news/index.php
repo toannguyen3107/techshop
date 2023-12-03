@@ -10,9 +10,9 @@
 <body>
 <?php require_once '../app/component/nav.php'?>
     <!-- -------------------NEWS data-carousel------------------------ -->
-    <div class="container p-2 flex flex-row mx-auto  justify-center flex-wrap ">
+    <div class=" p-2 flex flex-row mx-auto  justify-center flex-wrap ">
         <!------------- left---------- -->
-        <div class="me-4" style="width:70%; min-width: 18rem;">
+        <div class="me-4 w-[54rem]">
 
             <a href="#" class=" flex flex-col items-center bg-[#E2F9EC] border border-gray-200 rounded-lg shadow md:flex-row md:max-w-sx hover:bg-[#c4f2d9]">
 
@@ -83,7 +83,7 @@
        
           
         <!-- ----------------------------list papers------------------------------------------------ -->
-        <div class=" max-w-sm p-4 bg-[#E2F9EC] border border-gray-220 rounded-lg shadow sm:p-6 " style="width:26% ;min-width:20rem;">
+        <div class=" w-[22rem] p-4 bg-[#E2F9EC] border border-gray-220 rounded-lg shadow sm:p-6 " >
             <h5 class="mb-3 text-base font-semibold text-gray-900 md:text-xl">
              BÀI VIẾT ĐƯỢC XEM NHIỀU NHẤT
             </h5>
@@ -148,7 +148,7 @@
     
 </div>
 <div class="flex justify-center">
-<button id="loadMoreBtn" class="m-4 px-4 py-2 bg-blue-500 text-white rounded-md w-[12rem] text-center hover:-translate-y-1">Xem thêm</button>
+<button id="loadMoreBtn" class="text-[1.4rem] m-4 px-4 py-2 bg-blue-500 text-white rounded-md w-[14rem] h-[3.2rem] text-center hover:-translate-y-1 hover:bg-blue-800">Xem thêm</button>
 </div>
 
 </div>
