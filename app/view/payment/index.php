@@ -48,11 +48,11 @@
                     if (!$conn) {
                         echo "Connection failed!";
                     }
-
+                    $user_id = $_SESSION["user_id"];
                     $totalPrice = 0;
                     $deliveryFee = 30000;
 
-                    $query = "SELECT * FROM `cart`, `product` WHERE productID=id";
+                    $query = "SELECT * FROM `cart`, `product` WHERE productID=id AND userID = '$user_id'";
                     if ($query_product = $conn->query($query)){
                         while($row = mysqli_fetch_assoc($query_product)){
                 ?>
