@@ -36,7 +36,7 @@
                 $query_product = $conn->query($query);
 
                 if (mysqli_num_rows($query_product) > 0){
-                    $delete_query = "DELETE FROM cart WHERE productID = '$prod_id'";
+                    $delete_query = "DELETE FROM `cart` WHERE productID = '$prod_id'";
                     $delete_query_run = $conn->query($delete_query);
                     if ($delete_query_run) echo 200;
                     else echo 500;
@@ -44,6 +44,19 @@
                 else{
                     echo "something went wrong";
                 }
+                break;
+
+            case 'add':
+                $prod_id = $_POST['prod_id'];
+                $user_id = $_POST['user_id'];
+
+                $query = "INSERT INTO `cart` (userID, productID, quantity) VALUES ('$user_id', '$prod_id', 1)";
+                if ($queryInsert = $conn->query($query)){
+                    echo 200;
+                }
+                else echo $conn->error;
+
+                break;
             default:
                 echo 500;
         }

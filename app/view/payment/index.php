@@ -52,7 +52,7 @@
                     $totalPrice = 0;
                     $deliveryFee = 30000;
 
-                    $query = "SELECT * FROM `cart`";
+                    $query = "SELECT * FROM `cart`, `product` WHERE productID=id";
                     if ($query_product = $conn->query($query)){
                         while($row = mysqli_fetch_assoc($query_product)){
                 ?>
