@@ -1,5 +1,6 @@
 <script>
     $(document).on('click', '.add-to-cart', function(){
+        // handle cart table
         var product = $(this).closest('.item');
         var id = product[0].id;
         $.ajax({
@@ -11,7 +12,15 @@
                 "scope": "add"
             },
             success: function (response){
-                if (response == '200') alert('Added to cart');
+                if (response == '200') {
+                    alert('Added to cart');
+                    // Modify number display on Cart
+                    var cartNumber = document.querySelector('.numberInCart');
+                    cartNumber.innerText = parseInt(cartNumber.innerText) + 1;
+                }
+                else if (response == '300'){
+                    alert('Updated quantity');
+                }
                 else alert('Something went wrong');
             }
         })
