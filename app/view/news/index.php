@@ -6,13 +6,39 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.1.1/flowbite.min.css"  rel="stylesheet" />
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <style>
+/* Large Devices, Wide Screens */ @media screen and (max-width: 1200px) {
+    html {
+        font-size: 16px;
+    }    
+}
+/* Medium Devices, Desktops */ @media screen and (max-width: 992px) {
+    html {
+        font-size: 14px;
+    }
+}
+/* Small Devices, Tablets */ @media screen and (max-width: 768px) {
+    html {
+        font-size: 10px;
+    }
+}
+/* Extra Small Devices, Phones */ @media screen and (max-width: 480px){
+    html {
+        font-size: 6px;
+    }
+}
+  
+
+</style>
 </head>
-<body>
+<body class="bg-[#f1fcf6]">
+
 <?php require_once '../app/component/nav.php'?>
+
     <!-- -------------------NEWS data-carousel------------------------ -->
     <div class=" p-2 flex flex-row mx-auto  justify-center flex-wrap ">
         <!------------- left---------- -->
-        <div class="me-4 w-[54rem]">
+        <div class="me-4 w-[50rem]">
 
             <a href="#" class=" flex flex-col items-center bg-[#E2F9EC] border border-gray-200 rounded-lg shadow md:flex-row md:max-w-sx hover:bg-[#c4f2d9]">
 
@@ -110,6 +136,18 @@
         </div>
 
     </div>
+    <div>   
+        <div class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</div>
+        <div class="relative flex justify-start mx-[8rem] mb-[2rem] ">
+            <div class="absolute top-[1.4rem] left-[0.2rem] flex items-center ps-3 pointer-events-none">
+                <svg class="w-[1.4rem] h-[1.4rem] text-white dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                </svg>
+            </div>
+            <input type="search" id="searchTitle" class="block w-[26rem] py-[1rem] pr-[8rem] ps-10 text-gray-900 border border-gray-300 rounded-lg text-[1.6rem] " placeholder="Search title paper">
+            <button id="search" type="button" class="text-white absolute left-[19rem] h-[2.8rem] w-[6rem] top-[0.6rem] bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-[1.2rem] px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
+        </div>
+    </div>
     <div  class="flex flex-col ">
     <!------------------------- news list ---------------------------------------->
     <div  id="adContainer" class="flex flex-row justify-center container mx-auto mb-4 flex-wrap">
@@ -178,6 +216,29 @@ $(document).ready(function () {
         });
     });
 });
+// ///////////////////////////////////////////SEARCH/////////////////////////////////////////////////////
+    
+var title='';
+    $("#searchTitle").on("input", function () {
+        // Gọi Ajax để lấy dữ liệu mới
+        title = document.querySelector('#searchTitle').value;
+        
+        if(title.length > 0){
+            $.ajax({
+            type: "GET",
+            url: "/techshop/app/view/news/ajaxSearch.php", // Đặt đường dẫn đến script xử lý truy vấn CSDL ở đây
+            data: { title: title },
+            success: function (data) {
+                // Thêm dữ liệu mới vào container
+                $("#adContainer").html(data);
+                
+            }
+        });
+        }
+        
+    });
+
+
 </script>
 
     

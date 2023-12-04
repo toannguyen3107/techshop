@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 	if( strlen($email) < 2) {
         $flag = false;
-        $nameEr = 'invalid email';
+        $emailEr = 'invalid email';
     }
 	if( strlen($pwd) < 8) {
         $flag = false;
@@ -101,7 +101,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt1->execute();
 
         echo " <span style='color:green;'>Add Success</span> ";
-		// $name = $phone = $email = $pwd = $passwordAgain = '';
+		$name = $phone = $email = $pwd = $passwordAgain = '';
     }
 } catch (PDOException $e) {
         echo '<span style="color:red;"> Add fail: ' . $e->getMessage().'</span>';
