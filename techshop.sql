@@ -79,7 +79,6 @@ CREATE TABLE `laptop` (
 CREATE TABLE `tablet` (
   `id` INT PRIMARY KEY NOT NULL,
   `kieumanhinh` VARCHAR(255),
-  `phamtram_giam` INT,
   `dungluong` VARCHAR(255),
   `ketnoi` VARCHAR(255),
   FOREIGN KEY (`id`) REFERENCES `product`(`id`)

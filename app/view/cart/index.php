@@ -25,6 +25,24 @@
 <body>
     <?php require_once '../app/component/nav.php'?>
     <div class="main container flex-row mx-auto my-4">
+    <?php
+        $server_name = "localhost";
+        $user_name = "root";
+        $password = "";
+        $database = "techshop";
+
+        $conn = mysqli_connect($server_name, $user_name, $password, $database);
+        if (!$conn) {
+            echo "Connection failed!";
+        }
+
+        $totalPrice = 0;
+
+        $query = "SELECT * FROM `cart`, `product` WHERE productID=id";
+        if ($query_product = $conn->query($query)){
+            if (mysqli_num_rows($query_product) > 0) {
+                while($row = mysqli_fetch_assoc($query_product)){
+    ?>
         <div class="flex">
             <img src="/techshop/public/img/cart/cart-icon.png" alt="cart-logo">
             <span class="flex align-bottom text-[#1c543c] pt-12">
@@ -41,23 +59,6 @@
         </div>
         <div class="flex-col my-4 bg-[#E2F9EC] h-auto text-[1rem] shadow-lg" style="text-align: center;">
             <div class="py-5 pl-4 pr-12 mb-8">
-                <?php
-                    $server_name = "localhost";
-                    $user_name = "root";
-                    $password = "";
-                    $database = "techshop";
-                                    
-                    $conn = mysqli_connect($server_name, $user_name, $password, $database);
-                    if (!$conn) {
-                        echo "Connection failed!";
-                    }
-
-                    $totalPrice = 0;
-
-                    $query = "SELECT * FROM `cart`";
-                    if ($query_product = $conn->query($query)){
-                        while($row = mysqli_fetch_assoc($query_product)){
-                ?>
                 <div id="<?=$row["productID"]?>" class="product flex mb-8 update-qty" style="align-items: center;">
                     <!-- <input id="default-checkbox" type="checkbox" <?php if ($row["status"] == "checked") echo $row["status"]; ?> class="mr-4 w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"> -->
                     <img src="<?=$row["image"]?>" alt="image" class="mr-4 ml-7 w-20">
@@ -82,11 +83,6 @@
                     </div>
                     <button class="delete-button w-[4rem]"><span class="text-center text-[#266E4F] hover:text-[#113c2a]">Xóa</span></button>
                 </div>
-                <?php
-                    }
-                }
-                $conn->close();
-                ?>
             </div>
             <div class="flex bg-[#E2F9EC] h-40 shadow-lg align-middle px-8 text-xl" style="height: 6rem; border: solid grey 1px; align-items: center;">
                <span class="mr-auto">Tổng thanh toán: <span class="text-[#266E4F] text-xl total-payment"> <?php echo number_format($totalPrice, 0, '', '.');?> ₫</span></span>
@@ -94,6 +90,21 @@
                 Mua hàng
                 </button></a>
             </div>
+            <?php
+                        }
+                    }
+                    else {echo '<div class="flex w-1/2" style="margin: 5% 0 5% 33%;">
+                        <div class="h-screen flex flex-col items-center justify-center">
+                            <img class="w-32 mb-8" src="/techshop/public/img/cart/no_cart.png" alt="cart-logo">
+                            <p class="text-xl mb-8">Không có sản phẩm nào trong giỏ hàng!</p>
+                            <a href="/techshop/public/home"><button class="bg-[#266E4F] hover:bg-[#113c2a] text-white py-2 px-4 rounded">
+                             Về trang chủ
+                            </button></a>
+                        </div>
+                    </div>';}
+                }
+                $conn->close();
+                ?>
         </div>
     </div>
     <?php require_once '../app/component/footer.php'?>
@@ -167,7 +178,7 @@
             console.log(quantity);
             $.ajax({
                 method: "POST",
-                url: "/techshop/public/functions/handleCart.php",
+                url: "/techshop/app/view/cart/handleCart.php",
                 data: {
                     "prod_id": prod_id,
                     "prod_quantity": quantity,
@@ -184,12 +195,24 @@
             var product = this.closest('.product');
             var allProduct = product.closest('.main');
             var prod_id = product.id;
-            product.remove();
             var remainProduct = allProduct.querySelector('.product');
+            $.ajax({
+                method: "POST",
+                url: "/techshop/app/view/cart/handleCart.php",
+                data: {
+                    "prod_id": prod_id,
+                    "scope": "delete"
+                },
+                success: function (response){
+                    if (response == '200') alert('Deleted');
+                    else alert('Something went wrong');
+                }
+            })
+            product.remove();
             if (!allProduct.contains(remainProduct))
             {
                 $.ajax({
-                    url: '/techshop/public/functions/no_product.php',
+                    url: '/techshop/app/view/cart/no_product.php',
                     type: 'POST',
                     success: function(response) {
                         $(".main").html(response);
@@ -198,21 +221,6 @@
                         console.log('Error:', error);
                     }
                 });
-                }
-            else
-            {
-                // $.ajax({
-                //     method: "POST",
-                //     url: "/techshop/public/functions/handleCart.php",
-                //     data: {
-                //         "prod_id": prod_id,
-                //         "scope": "delete"
-                //     },
-                //     success: function (response){
-                //         if (response == '200') alert('Deleted');
-                //         else alert('Something went wrong');
-                //     }
-                // })
             }
         });
     </script>
