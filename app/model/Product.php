@@ -71,5 +71,112 @@
             //$data = json_decode($data);
             return $data;
         }
+        public function getPhone(){
+            try{
+                require_once '../app/component/connect.php';
+                $stmt = $conn->prepare('SELECT * FROM product p JOIN phone ph ON p.id = ph.id LIMIT 4');
+                $stmt->execute();
+                $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }catch(PDOException $e){
+                echo $e->getMessage();
+            }finally{
+                require_once '../app/component/close.php';
+            }
+            //$data = file_get_contents('./product.json');
+            //$data = json_decode($data);
+            return $data;
+        }
+        public function getProductPhone(){
+            try {
+                require_once '../app/component/connect.php';
+                
+                $offset = isset($_GET['offset']) ? intval($_GET['offset']) : 4;
+                $limit = isset($_GET['limit']) ? intval($_GET['limit']) : 4;
+               
+                $queryProduct = "SELECT * FROM product WHERE category='Phone' LIMIT $offset,$limit";
+                //  $query1 = "SELECT DISTINCT * FROM paper order by RAND() limit 3";
+                $stmt1 = $conn->query($queryProduct);
+            
+                // Lấy tất cả các dòng dữ liệu từ kết quả truy vấn
+                $data = $stmt1->fetchAll(PDO::FETCH_ASSOC);
+                    } catch (PDOException $e) {
+                        echo $e->getMessage();
+                    } finally {
+                        require_once '../app/component/close.php';
+                    }
+                    return $data;
+        } 
+
+        public function getTablet(){
+            try{
+                require_once '../app/component/connect.php';
+                $stmt = $conn->prepare('SELECT * FROM product p JOIN tablet ph ON p.id = ph.id LIMIT 4');
+                $stmt->execute();
+                $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }catch(PDOException $e){
+                echo $e->getMessage();
+            }finally{
+                require_once '../app/component/close.php';
+            }
+            //$data = file_get_contents('./product.json');
+            //$data = json_decode($data);
+            return $data;
+        }
+        public function getProductTablet(){
+                try {
+                    require_once '../app/component/connect.php';
+                    
+                    $offset = isset($_GET['offset']) ? intval($_GET['offset']) : 4;
+                    $limit = isset($_GET['limit']) ? intval($_GET['limit']) : 4;
+                   
+                    $queryProduct = "SELECT * FROM product WHERE category='Tablet' LIMIT $offset,$limit";
+                    //  $query1 = "SELECT DISTINCT * FROM paper order by RAND() limit 3";
+                    $stmt1 = $conn->query($queryProduct);
+                
+                    // Lấy tất cả các dòng dữ liệu từ kết quả truy vấn
+                    $data = $stmt1->fetchAll(PDO::FETCH_ASSOC);
+                        } catch (PDOException $e) {
+                            echo $e->getMessage();
+                        } finally {
+                            require_once '../app/component/close.php';
+                        }
+                        return $data;
+        } 
+
+        public function getLaptop(){
+            try{
+                require_once '../app/component/connect.php';
+                $stmt = $conn->prepare('SELECT * FROM product p JOIN laptop ph ON p.id = ph.id LIMIT 4');
+                $stmt->execute();
+                $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }catch(PDOException $e){
+                echo $e->getMessage();
+            }finally{
+                require_once '../app/component/close.php';
+            }
+            //$data = file_get_contents('./product.json');
+            //$data = json_decode($data);
+            return $data;
+        }
+        public function getProductLaptop(){
+            try {
+                require_once '../app/component/connect.php';
+                
+                $offset = isset($_GET['offset']) ? intval($_GET['offset']) : 4;
+                $limit = isset($_GET['limit']) ? intval($_GET['limit']) : 4;
+               
+                $queryProduct = "SELECT * FROM product WHERE category='Laptop' LIMIT $offset,$limit";
+                //  $query1 = "SELECT DISTINCT * FROM paper order by RAND() limit 3";
+                $stmt1 = $conn->query($queryProduct);
+            
+                // Lấy tất cả các dòng dữ liệu từ kết quả truy vấn
+                $data = $stmt1->fetchAll(PDO::FETCH_ASSOC);
+                    } catch (PDOException $e) {
+                        echo $e->getMessage();
+                    } finally {
+                        require_once '../app/component/close.php';
+                    }
+                    return $data;
+        } 
     }
 ?>

@@ -5,19 +5,19 @@
     <div class="col-span-1 flex flex-row items-center justify-center"><a href="/techshop"><img src="/techshop/public/img/large.png" alt="Logo techshop" class="h-[72px] w-[72px] rounded-full"></a>
             </div>     
         <div class="col-span-1 my-auto">
-            <a href="#" class=" flex flex-row gap-3 p-1 items-center hover:bg-[#fff0d4] hover:rounded-lg justify-center hover:border-2 hover:border-[#111]">
+            <a href="/techshop/public/phone/index" class=" flex flex-row gap-3 p-1 items-center hover:bg-[#fff0d4] hover:rounded-lg justify-center hover:border-2 hover:border-[#111]">
             <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512"><path d="M16 64C16 28.7 44.7 0 80 0H304c35.3 0 64 28.7 64 64V448c0 35.3-28.7 64-64 64H80c-35.3 0-64-28.7-64-64V64zM144 448c0 8.8 7.2 16 16 16h64c8.8 0 16-7.2 16-16s-7.2-16-16-16H160c-8.8 0-16 7.2-16 16zM304 64H80V384H304V64z"/></svg>
                 <span class="text-base font-semibold">Điện thoại</span>
             </a>
         </div>
         <div class="col-span-1 my-auto">
-            <a href="#" class=" flex flex-row gap-3 p-1 items-center hover:bg-[#fff0d4] hover:rounded-lg justify-center hover:border-2 hover:border-[#111]">
+            <a href="/techshop/public/laptop/index" class=" flex flex-row gap-3 p-1 items-center hover:bg-[#fff0d4] hover:rounded-lg justify-center hover:border-2 hover:border-[#111]">
             <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 640 512"><path d="M128 32C92.7 32 64 60.7 64 96V352h64V96H512V352h64V96c0-35.3-28.7-64-64-64H128zM19.2 384C8.6 384 0 392.6 0 403.2C0 445.6 34.4 480 76.8 480H563.2c42.4 0 76.8-34.4 76.8-76.8c0-10.6-8.6-19.2-19.2-19.2H19.2z"/></svg>
                 <span class="text-base font-semibold">Laptop</span>
             </a>
         </div>
         <div class="col-span-1 my-auto">
-            <a href="#" class="flex flex-row gap-3 p-1 items-center hover:bg-[#fff0d4] hover:rounded-lg justify-center hover:border-2 hover:border-[#111]">
+            <a href="/techshop/public/tablet/index" class="flex flex-row gap-3 p-1 items-center hover:bg-[#fff0d4] hover:rounded-lg justify-center hover:border-2 hover:border-[#111]">
             <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path d="M0 64C0 28.7 28.7 0 64 0H384c35.3 0 64 28.7 64 64V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V64zM256 448a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zM384 64H64V384H384V64z"/></svg>
                 <span class="text-base font-semibold">Tablet</span>
             </a>
@@ -63,19 +63,19 @@
         <div class="col-span-1 flex flex-row items-center justify-center"><a href="/techshop"><img src="/techshop/public/img/large.png" alt="Logo techshop" class="h-[72px] w-[72px] rounded-full"></a>
         </div>    
         <div class="col-span-1 my-auto">
-            <a href="#" class=" flex flex-row gap-3 p-1 items-center hover:bg-[#fff0d4] hover:rounded-lg justify-center hover:border-2 hover:border-[#111]">
+            <a href="/techshop/public/phone/index" class=" flex flex-row gap-3 p-1 items-center hover:bg-[#fff0d4] hover:rounded-lg justify-center hover:border-2 hover:border-[#111]">
             <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512"><path d="M16 64C16 28.7 44.7 0 80 0H304c35.3 0 64 28.7 64 64V448c0 35.3-28.7 64-64 64H80c-35.3 0-64-28.7-64-64V64zM144 448c0 8.8 7.2 16 16 16h64c8.8 0 16-7.2 16-16s-7.2-16-16-16H160c-8.8 0-16 7.2-16 16zM304 64H80V384H304V64z"/></svg>
                 <span class="text-base font-semibold">Điện thoại</span>
             </a>
         </div>
         <div class="col-span-1 my-auto">
-            <a href="#" class=" flex flex-row gap-3 p-1 items-center hover:bg-[#fff0d4] hover:rounded-lg justify-center hover:border-2 hover:border-[#111]">
+            <a href="/techshop/public/laptop/index" class=" flex flex-row gap-3 p-1 items-center hover:bg-[#fff0d4] hover:rounded-lg justify-center hover:border-2 hover:border-[#111]">
             <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 640 512"><path d="M128 32C92.7 32 64 60.7 64 96V352h64V96H512V352h64V96c0-35.3-28.7-64-64-64H128zM19.2 384C8.6 384 0 392.6 0 403.2C0 445.6 34.4 480 76.8 480H563.2c42.4 0 76.8-34.4 76.8-76.8c0-10.6-8.6-19.2-19.2-19.2H19.2z"/></svg>
                 <span class="text-base font-semibold">Laptop</span>
             </a>
         </div>
         <div class="col-span-1 my-auto">
-            <a href="#" class="flex flex-row gap-3 p-1 items-center hover:bg-[#fff0d4] hover:rounded-lg justify-center hover:border-2 hover:border-[#111]">
+            <a href="/techshop/public/tablet/index" class="flex flex-row gap-3 p-1 items-center hover:bg-[#fff0d4] hover:rounded-lg justify-center hover:border-2 hover:border-[#111]">
             <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path d="M0 64C0 28.7 28.7 0 64 0H384c35.3 0 64 28.7 64 64V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V64zM256 448a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zM384 64H64V384H384V64z"/></svg>
                 <span class="text-base font-semibold">Tablet</span>
             </a>
