@@ -216,3 +216,11 @@ ALTER TABLE `news`
 ALTER TABLE `paper`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
+-- admin
+CREATE TABLE Admin(
+      admin_id INT PRIMARY KEY NOT NULL,
+      name VARCHAR(40) NOT NULL,
+      password TEXT
+);
+ALTER TABLE Admin AUTO_INCREMENT=1000;
+INSERT INTO Admin (name, password) VALUES ('admin', '12345');
