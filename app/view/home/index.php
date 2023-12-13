@@ -5,6 +5,36 @@
     <?php require_once '../app/component/head.php';?>
     <title>Home | TECHSHOP</title>
     <script>
+  // Set the countdown date and time (replace with your desired date and time)
+  var countdownDate = new Date("Dec 31, 2023 00:00:00").getTime();
+
+  // Update the countdown every 1 second
+  var countdownInterval = setInterval(function () {
+    // Get the current date and time
+    var now = new Date().getTime();
+
+    // Calculate the remaining time in milliseconds
+    var timeRemaining = countdownDate - now;
+
+    // Calculate days, hours, minutes, and seconds
+    var days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+    // Display the countdown in the designated HTML element
+    document.getElementById("countdown").innerHTML =
+      days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+    // If the countdown is over, display a message
+    if (timeRemaining < 0) {
+      clearInterval(countdownInterval);
+      document.getElementById("countdown").innerHTML = "EXPIRED";
+    }
+  }, 1000);
+</script>
+
+    <script>
     $(document).ready(function(){
         $.ajax({
             url: '/techshop/public/api/phonetop',
@@ -102,10 +132,18 @@
         <div class="col-span-6 md:col-span-2"><p class="cursor-pointer selected text-[#fff] border-2 border-[#fff] rounded-[0.5rem] text-center bg-[#111] p-[0.3rem] mr-[0.5rem] font-bold text-[10px] lg:text-base" id="phone">ĐIỆN THOẠI</p></div>
         <div class="col-span-6 md:col-span-2"><p class="cursor-pointer text-[#111] border-2 border-[#111] rounded-[0.5rem] text-center bg-[#fff] p-[0.3rem] mr-[0.5rem] font-bold text-[10px] lg:text-base" id="laptop">LAPTOP</p></div>
         <div class="col-span-6 md:col-span-2"><p class="cursor-pointer text-[#111] border-2 border-[#111] rounded-[0.5rem] text-center bg-[#fff] p-[0.3rem] mr-[0.5rem] font-bold text-[10px] lg:text-base" id="other">Khác</p></div>
-        <div class="col-span-6 md:col-span-3"><p class="text-center text-sm lg:text-2xl font-bold text-white"><span class="text-[#BB0000]">HOT SALE</span> CUỐI TUẦN</p></div>
         <div class="col-span-6 md:col-span-3">
-            <p class="text-center"><span class="font-bold inline-block mr-[1rem]">BẮT ĐẦU SAU</span><span class="inline-block border-2 border-black p-1 bg-[#fff] mx-1">02</span>:<span class="inline-block border-2 border-black p-1 bg-[#fff] mx-1">06</span>:<span class="inline-block border-2 border-black p-1 bg-[#fff] mx-1">13</span>:<span class="inline-block border-2 border-black p-1 bg-[#fff] mx-1">21</span></p>
+        <p class="text-center text-sm lg:text-2xl font-bold text-white">
+            <span class="text-[#BB0000]">HOT SALE</span> CUỐI TUẦN
+        </p>
         </div>
+        <div class="col-span-6 md:col-span-3">
+        <p class="text-center">
+            <span class="font-bold inline-block mr-[1rem]">BẮT ĐẦU SAU</span>
+            <span id="countdown" class="inline-block border-2 border-black p-1 bg-[#fff] mx-1"></span>
+        </p>
+        </div>
+
     </div>
     <div class="grid grid-cols-4 md:grid-cols-12 gap-3 md:w-[80%] mx-auto mt-[1rem] bg-[#eee] rounded-[1rem] p-[1rem]">
             <div class="col-span-4 md:col-span-12">
