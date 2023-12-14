@@ -1,3 +1,7 @@
+<?php 
+    if (!isset($_SESSION["user_id"])) header('Location: /techshop/public/login/index');
+    else{
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -256,3 +260,4 @@
     </script>
 </body>
 </html>
+<?php } ?>

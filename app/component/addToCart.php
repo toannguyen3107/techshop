@@ -1,3 +1,7 @@
+<?php
+    if (!isset($_SESSION["user_id"])) header('Location: /techshop/public/login/index');
+    else {
+?>
 <script>
     $(document).on('click', '.add-to-cart', function(){
         // handle cart table
@@ -26,3 +30,6 @@
         })
     });
 </script>
+<?php
+}
+?>
