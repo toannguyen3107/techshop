@@ -25,9 +25,9 @@
             <div class="px-12">
                 <div class="flex mb-2">
                     <div class="mr-auto">Họ và tên: <span id="name" class="text-[#1c543c] italic"></span></div>
-                    <div>Số điện thoại: <input type="text" class="w-auto bg-[#B4EFD0] focus:ring-[#1C543C] border border-[#266e4f]" require oninput="phoneValidate(this.value)"></div>
+                    <div>Số điện thoại: <input type="text" class="w-auto bg-[#B4EFD0] focus:ring-[#1C543C] border border-[#266e4f] rounded" require oninput="phoneValidate(this.value)"></div>
                 </div>
-                <p>Địa chỉ: <input type="text" class="w-1/2 bg-[#B4EFD0] focus:ring-[#1C543C] border border-[#266e4f]" require></p>
+                <p>Địa chỉ: <input type="text" class="w-1/2 bg-[#B4EFD0] focus:ring-[#1C543C] border border-[#266e4f] rounded" require></p>
             </div>
         </div>
         <div class="flex-col my-4 bg-[#E2F9EC] h-auto text-[1rem] shadow-lg" style="text-align: center;">
@@ -60,7 +60,7 @@
                     <!-- <input id="default-checkbox" type="checkbox" <?php if ($row["status"] == "checked") echo $row["status"]; ?> class="mr-4 w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"> -->
                     <img src="<?=$row["image"]?>" alt="image" class="mr-4 w-20">
                     <p class="mr-auto"><?=$row["name"]?></p>
-                    <p class="w-[8rem] price"><?=$row["price"]?></p>
+                    <p class="w-[8rem] price"><?=number_format($row['price'], 0, '', '.')?> ₫</p>
                     <div class="w-[8rem] custom-number-input h-10 w-32">
                         <div class="flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-1">
                             <input type="number" class="quantity outline-none focus:outline-none text-center w-full bg-[#E2F9EC] font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700  outline-none bg-transparent border-none" name="custom-input-number" disabled value="<?=$row["quantity"]?>"></input>
@@ -83,12 +83,12 @@
         <div class="flex-col bg-[#E2F9EC] h-auto text-[1rem] shadow-lg">
             <div class="flex py-5 pl-11 pr-12 items-center border-b border-black">
                 <img src="/techshop/public/img/payment/cash-icon.png" alt="cash-logo" class="mr-4">
-                <span class="text-xl mr-auto">Phương thức thanh toán</span>
+                <span class="text-xl mr-auto">Phương thức thanh toán <p id="error-method" class="text-red-300 text-sm italic"></p></span>
                 <div class="flex ml-2 mt-2">
-                    <button value="1" onclick="changePaymentType(this.value)" type="button" class="flex text-gray-900 bg-[#B4EFD0] hover:bg-[#55dca2] border border-[#266e4f] focus:ring-4 focus:outline-none focus:ring-[#1C543C] font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#266e4f] me-2 mb-2">
+                <button value="1" onclick="changePaymentType(this.value)" type="button" class="flex text-gray-900 bg-[#B4EFD0] hover:bg-[#55dca2] border border-[#266e4f] focus:ring-4 focus:outline-none focus:ring-[#1C543C] font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#266e4f] me-2 mb-2">
                     <img src="https://cdn-icons-png.flaticon.com/512/5229/5229335.png" alt="icon" class="w-4 mr-2">
                     Thanh toán khi nhận hàng
-                    </button>
+                </button>
                 </div>
                 <div class="flex ml-2 mt-2">
                     <button value="2" onclick="changePaymentType(this.value)" type="button" class="flex text-gray-900 bg-[#B4EFD0] hover:bg-[#55dca2] border border-[#266e4f] focus:ring-4 focus:outline-none focus:ring-[#1C543C] font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#266e4f] me-2 mb-2">
@@ -128,7 +128,7 @@
     
     function changePaymentType(value){
         paymentType = value;
-        $('#error')[0].innerHTML = "";
+        $('#error-method')[0].innerHTML = "";
     }
     function phoneValidate(value) {
         var error = $('#error')[0];
@@ -155,11 +155,24 @@
     $(document).on('click', '.order', function(e){
         e.preventDefault();
         if (paymentType == 0){
-            $('#error')[0].innerHTML = "*Vui lòng chọn phương thức thanh toán";
+            $('#error-method')[0].innerHTML = "*Vui lòng chọn phương thức thanh toán";
         }
         else{
-            alert('Đặt hàng thành công!');
-            window.location.replace('/techshop/public/home/index');
+            // alert('Đặt hàng thành công!');
+            // window.location.replace('/techshop/public/home/index');
+            $.ajax({
+                url: '/techshop/app/view/cart/no_product.php',
+                type: 'POST',
+                data: {
+                    scope: "success",
+                },
+                success: function(response) {
+                    $(".main").html(response);
+                },
+                error: function(error) {
+                    console.log('Error:', error);
+                }
+            });
         }
     });
 </script>

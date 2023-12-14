@@ -46,7 +46,7 @@
                         let div = ' <a href="/techshop/public/detailProduct/index?id='+value.id+'" class="item col-span-2 md:col-span-3 border-2 border-black bg-[#fff] px-1 py-6 md:w-[80%] rounded-lg hover:bg-[#eee]"> <div id='+ value.id + ' >' 
                       div += '<img src="' + value.image +'"class="w-[130px] h-[150px] block mx-auto">';
                       div += '<p class="text-lg font-semibold text-center">' + value.name+'</p>';
-                      div += '<p class="text-red-500 ms-3 mt-2">' + value.price+ 'đ</p>';
+                      div += '<p class="text-red-500 ms-3 mt-2">' + value.price + ' đ</p>';
                       div += '<button type="button" class="add-to-cart block mx-auto bg-green-400 text-gray-900 text-bold text-lg border-2 border-black px-4 py-1 rounded-lg hover:bg-green-600">Mua</button>'; 
                       div += '</div></a>'; 
                         $('#sale').append(div);
