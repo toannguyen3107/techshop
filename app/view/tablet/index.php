@@ -116,5 +116,4 @@
     
 <?php require_once '../app/component/footer.php'?>
 </body>
-<?php require_once '../app/component/addToCart.php'?>
 </html>

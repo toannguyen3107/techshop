@@ -9,7 +9,7 @@
 </head>
 <body>
     <?php require_once '../app/component/nav.php'?>
-    <div class="main container flex-row mx-auto my-4">
+    <form class="main container flex-row mx-auto my-4">
         <div class="flex">
             <img src="/techshop/public/img/cart/cart-icon.png" alt="cart-logo">
             <span class="flex align-bottom text-[#1c543c] pt-12">
@@ -20,14 +20,14 @@
         <div class="flex-col my-4 bg-[#E2F9EC] py-2 px-4 text-[1rem] shadow-lg align-middle">
             <div class="flex items-center mb-4">
                 <img src="/techshop/public/img/payment/location-icon.png" alt="icon" class="w-12">
-                <span class="text-[#1C543C] text-xl" style="color: #1C543C;">Địa chỉ nhận hàng</span>
+                <span class="text-[#1C543C] text-xl" style="color: #1C543C;">Địa chỉ nhận hàng</span><span id="error" class="text-red-300 italic text-sm"></span>
             </div>
             <div class="px-12">
                 <div class="flex mb-2">
-                    <p class="mr-auto">Họ và tên: </p>
-                    <p>Số điện thoại:</p>
+                    <div class="mr-auto">Họ và tên: <span id="name" class="text-[#1c543c] italic"></span></div>
+                    <div>Số điện thoại: <input type="text" class="w-auto bg-[#B4EFD0] focus:ring-[#1C543C] border border-[#266e4f]" require oninput="phoneValidate(this.value)"></div>
                 </div>
-                <p>Địa chỉ:</p>
+                <p>Địa chỉ: <input type="text" class="w-1/2 bg-[#B4EFD0] focus:ring-[#1C543C] border border-[#266e4f]" require></p>
             </div>
         </div>
         <div class="flex-col my-4 bg-[#E2F9EC] h-auto text-[1rem] shadow-lg" style="text-align: center;">
@@ -85,20 +85,20 @@
                 <img src="/techshop/public/img/payment/cash-icon.png" alt="cash-logo" class="mr-4">
                 <span class="text-xl mr-auto">Phương thức thanh toán</span>
                 <div class="flex ml-2 mt-2">
-                    <button type="button" class="flex text-gray-900 bg-[#B4EFD0] hover:bg-[#55dca2] border border-[#266e4f] focus:ring-4 focus:outline-none focus:ring-[#1C543C] font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#266e4f] me-2 mb-2">
-                    <img src="https://cdn-icons-png.flaticon.com/512/5229/5229335.png" alt="icon" class="w-6 mr-2">
+                    <button value="1" onclick="changePaymentType(this.value)" type="button" class="flex text-gray-900 bg-[#B4EFD0] hover:bg-[#55dca2] border border-[#266e4f] focus:ring-4 focus:outline-none focus:ring-[#1C543C] font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#266e4f] me-2 mb-2">
+                    <img src="https://cdn-icons-png.flaticon.com/512/5229/5229335.png" alt="icon" class="w-4 mr-2">
                     Thanh toán khi nhận hàng
                     </button>
                 </div>
                 <div class="flex ml-2 mt-2">
-                    <button type="button" class="flex text-gray-900 bg-[#B4EFD0] hover:bg-[#55dca2] border border-[#266e4f] focus:ring-4 focus:outline-none focus:ring-[#1C543C] font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#266e4f] me-2 mb-2">
-                    <img src="https://cdn.iconscout.com/icon/free/png-256/free-mastercard-3521564-2944982.png" alt="icon" class="w-6 mr-2">
+                    <button value="2" onclick="changePaymentType(this.value)" type="button" class="flex text-gray-900 bg-[#B4EFD0] hover:bg-[#55dca2] border border-[#266e4f] focus:ring-4 focus:outline-none focus:ring-[#1C543C] font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#266e4f] me-2 mb-2">
+                    <img src="https://cdn.iconscout.com/icon/free/png-256/free-mastercard-3521564-2944982.png" alt="icon" class="w-4 mr-2">
                     MasterCard
                     </button>
                 </div>
                 <div class="flex ml-2 mt-2">
-                    <button type="button" class="flex text-gray-900 bg-[#B4EFD0] hover:bg-[#55dca2] border border-[#266e4f] focus:ring-4 focus:outline-none focus:ring-[#1C543C] font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#266e4f] me-2 mb-2">
-                    <img src="https://developers.momo.vn/v3/assets/images/circle-logo-custom-16cb24e3ed26349c467cb2e932000fde.png" alt="icon" class="w-6 mr-2">
+                    <button value="3" onclick="changePaymentType(this.value)" type="button" class="flex text-gray-900 bg-[#B4EFD0] hover:bg-[#55dca2] border border-[#266e4f] focus:ring-4 focus:outline-none focus:ring-[#1C543C] font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#266e4f] me-2 mb-2">
+                    <img src="https://developers.momo.vn/v3/assets/images/circle-logo-custom-16cb24e3ed26349c467cb2e932000fde.png" alt="icon" class="w-4 mr-2">
                     Momo
                     </button>
                 </div>
@@ -115,16 +115,54 @@
                         <p><?php echo number_format($totalPrice, 0, '', '.'); ?> ₫</p>
                         <p><?php echo number_format($deliveryFee, 0, '', '.'); ?> ₫</p>
                         <p class="mb-4 text-2xl font-semibold"><?php echo number_format($totalPrice + $deliveryFee, 0, '', '.'); ?> ₫</p>
-                        <button class="bg-[#266E4F] hover:bg-[#113c2a] text-white py-2 px-4 rounded">
+                        <button class="order bg-[#266E4F] hover:bg-[#113c2a] text-white py-2 px-4 rounded">
                         Đặt hàng
                         </button>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </form>
     <script>
-    </script>
+    var paymentType = 0;
+    
+    function changePaymentType(value){
+        paymentType = value;
+        $('#error')[0].innerHTML = "";
+    }
+    function phoneValidate(value) {
+        var error = $('#error')[0];
+        console.log(error);
+        if ((/^[0-9]*$/g).exec(value) != null){
+            error.innerHTML = "";
+        }
+        else {
+            error.innerHTML = "*Vui lòng chỉ nhập số trong số điện thoại!*";
+        }
+    }
+    $(document.ready).ready($.ajax(
+        {
+            url: '/techshop/public/api/name',
+            method: 'GET',
+            success: function(response){
+                console.log(response);
+                var data = response;
+                $('#name').html(data);
+            }
+        }
+    )
+    );
+    $(document).on('click', '.order', function(e){
+        e.preventDefault();
+        if (paymentType == 0){
+            $('#error')[0].innerHTML = "*Vui lòng chọn phương thức thanh toán";
+        }
+        else{
+            alert('Đặt hàng thành công!');
+            window.location.replace('/techshop/public/home/index');
+        }
+    });
+</script>
     <?php require_once '../app/component/footer.php'?>
 </body>
 </html>
