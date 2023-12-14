@@ -90,12 +90,12 @@ $password = '';
         echo '<p class="text-[1.4rem] text-[1.8rem] text-gray-700 mb-2">Giá: '.number_format($product['price'], 0, '', '.') . ' ₫'.'</p>';
         echo '<p class="text-[1.4rem] text-[1.8rem] text-gray-700 mb-4">Lượt mua: '.$product['luotmua'].'</p>';
         echo '<div class="flex justify-center mt-[2rem] item" id="'.$id.'">';
-        echo ' <a href="" class="add-to-cart inline-flex items-center px-[1.4rem] py-[1rem] text-[1.4rem] font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 ">
+        echo ' <button class="add-to-cart inline-flex items-center px-[1.4rem] py-[1rem] text-[1.4rem] font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 ">
                     Thêm vào giỏ hàng
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1953 1736" fill="none" class="w-[2rem] h-[2rem]">
                     <path d="M1711.29 1084.99H717.353L739.544 1193.49H1649.64C1701.86 1193.49 1740.56 1241.97 1728.99 1292.89L1710.28 1375.2C1773.66 1405.97 1817.35 1470.93 1817.35 1546.11C1817.35 1651.9 1730.83 1737.48 1624.69 1735.96C1523.57 1734.5 1440.41 1652.45 1437.68 1551.35C1436.19 1496.13 1458.31 1446.08 1494.65 1410.48H783.822C819.006 1444.95 840.865 1492.96 840.865 1546.11C840.865 1653.97 750.92 1740.83 641.939 1735.77C545.172 1731.28 466.473 1653.09 461.387 1556.35C457.461 1481.64 496.772 1415.79 556.497 1381.44L318.318 216.997H81.374C36.4318 216.997 0 180.566 0 135.623V81.374C0 36.4318 36.4318 0 81.374 0H429.007C467.663 0 500.983 27.1959 508.73 65.0653L539.808 216.997H1871.57C1923.79 216.997 1962.49 265.486 1950.92 316.406L1790.64 1021.65C1782.22 1058.7 1749.28 1084.99 1711.29 1084.99ZM1383.36 569.618H1220.61V433.995C1220.61 404.032 1196.32 379.746 1166.36 379.746H1112.11C1082.15 379.746 1057.86 404.032 1057.86 433.995V569.618H895.114C865.152 569.618 840.865 593.905 840.865 623.868V678.117C840.865 708.08 865.152 732.366 895.114 732.366H1057.86V867.99C1057.86 897.952 1082.15 922.239 1112.11 922.239H1166.36C1196.32 922.239 1220.61 897.952 1220.61 867.99V732.366H1383.36C1413.32 732.366 1437.61 708.08 1437.61 678.117V623.868C1437.61 593.905 1413.32 569.618 1383.36 569.618Z" fill="white"/>
                     </svg>
-                </a>';
+                </button>';
         echo '</div>';
         echo '</div>';
         echo '<img class="thumbnail md:w-[34rem] w-[20rem]" src="'.$product['image'].'" alt="Image 1" onclick="openLightbox(`'.$product['image'].'`)">';
