@@ -4,6 +4,30 @@
 <head>
     <?php require_once '../app/component/head.php';?>
     <title>Home | TECHSHOP</title>
+    <style>
+/* Large Devices, Wide Screens */ @media screen and (max-width: 1200px) {
+    html {
+        font-size: 16px;
+    }    
+}
+/* Medium Devices, Desktops */ @media screen and (max-width: 992px) {
+    html {
+        font-size: 14px;
+    }
+}
+/* Small Devices, Tablets */ @media screen and (max-width: 768px) {
+    html {
+        font-size: 10px;
+    }
+}
+/* Extra Small Devices, Phones */ @media screen and (max-width: 480px){
+    html {
+        font-size: 6px;
+    }
+}
+  
+
+</style>
     <script>
     $(document).ready(function(){
         $.ajax({
@@ -56,49 +80,7 @@
                 }
             });
         });
-        // $('#phone').click(function(){
-        //     toggleTheme($(this));
-        //     apiGet('/techshop/public/api/phonetop');
-        // });
 
-        // $('#laptop').click(function(){
-        //     toggleTheme($(this));
-        //     apiGet('/techshop/public/api/laptoptop');
-        // });
-
-        // $('#other').click(function(){
-        //     toggleTheme($(this));
-        // });
-        // function apiGet(url){
-        //     $.ajax({
-        //         url: url,
-        //         method: 'GET',
-        //         dataType: 'json', 
-        //         success: function(res){
-        //             console.log(res);
-        //             $('#sale .item').remove();
-        //             Object.entries(res).forEach(([key, value]) => {
-        //               let div = '<div id='+ value.id + ' class="item col-span-3 md:col-span-3 border-2 border-black bg-[#fff] px-1 py-6 md:w-[80%] rounded-lg hover:bg-[#eee]">'
-        //               div += '<img src="' + value.image +'"class="w-[130px] h-[150px] block mx-auto">';
-        //               div += '<p class="text-lg font-semibold text-center">' + value.name+'</p>';
-        //               div += '<button type="button" class="add-to-cart block mx-auto bg-green-400 text-gray-900 text-bold text-lg border-2 border-black px-4 py-1 rounded-lg hover:bg-green-600">Mua</button>'; 
-        //               div += '<p class="text-red-500 ms-3 mt-2">' + value.price+ 'đ</p>';
-        //               div += '</div>';
-        //             $('#sale').append(div);
-        //             });
-        //         },
-        //         error: function(e){
-        //             console.error(e);
-        //         }
-        //     });
-        // }
-        // function toggleTheme(element) {
-        //     if(!element.hasClass('selected')){
-        //         $('.selected').attr('class', 'cursor-pointer text-[#111] border-2 border-[#111] rounded-[0.5rem] text-center bg-[#fff] p-[0.3rem] mr-[0.5rem] font-bold text-[10px] lg:text-base');
-        //         element.attr('class', 'cursor-pointer selected text-[#fff] border-2 border-[#fff] rounded-[0.5rem] text-center bg-[#111] p-[0.3rem] mr-[0.5rem] font-bold text-[10px] lg:text-base');
-        //     }
-            
-        // }
     });
 </script>
 </head>
