@@ -14,9 +14,10 @@
                $_SESSION['login'] = true;  
                $_SESSION['user_id'] = $result[0]['user_id']; //set id for session
             }else{
-                header('location: /techshop/public/login/index');
-                echo "false";
-                exit();
+                // header('location: /techshop/public/login/index');
+                // echo "false";
+                // Send POST request with body "login_fault=true"
+                header('location: /techshop/public/login/index?login_false=false');
             }
             }catch(PDOException $e){
                 echo "Error: " . $e->getMessage();
